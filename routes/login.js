@@ -14,6 +14,10 @@ router.get('/register', function(req, res, next) {
   return res.render('register')
 });
 
+router.post('/register', function(req, res, next) {
+  
+  console.log('register page post')
+});
 //forgot pass
 router.get('/forgotpass', function(req, res, next) {
   
