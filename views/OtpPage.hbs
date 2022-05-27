@@ -1,0 +1,124 @@
+<style>
+    body,
+    .signin,
+    .signup {
+        background-color: #e493ff;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(19, 18, 18);
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .avatar {
+        width: 200px;
+        height: 200px;
+        margin-left: 24%;
+        margin-top: 5px;
+        display: block;
+    }
+
+    .page {
+        position: relative;
+        height: 650px;
+        width: 405px;
+        margin: auto;
+        padding: 100px 70px;
+        background-color: rgb(187, 152, 106);
+        background-size: cover;
+    }
+
+    form {
+        padding-top: -50px;
+    }
+
+    .active {
+        border-bottom: 2px solid #1161ed;
+    }
+
+    h2 {
+        padding-left: 12px;
+        font-size: 22px;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+        letter-spacing: 2px;
+        display: inline-block;
+        font-weight: 100;
+    }
+
+    h2:first-child {
+        padding-left: 0px;
+    }
+
+    span {
+        text-transform: uppercase;
+        font-size: 12px;
+        position: relative;
+        top: -65px;
+    }
+
+    .text {
+        border: none;
+        width: 89%;
+        padding: 10px 20px;
+        display: block;
+        height: 15px;
+        border-radius: 20px;
+        background: rgba(1, 0, 0, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0);
+        margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-family: 'Montserrat', sans-serif;
+        color: #fff;
+    }
+
+    label {
+        display: inline-block;
+        padding-top: 10px;
+        padding-left: 5px;
+    }
+
+    .signin,
+    .signup,
+    .repass {
+        background-color: #1161ed;
+        color: #FFF;
+        width: 100%;
+        padding: 10px 20px;
+        height: 39px;
+        border-radius: 20px;
+        margin-top: 20px;
+        border: none;
+    }
+
+    #fg {
+        text-align: center;
+        display: block;
+        top: 30px;
+        position: relative;
+        text-decoration: none;
+        color: rgba(10, 19, 120, 0.2);
+    }
+</style>
+<body>
+    <div class="page">
+        <h2 class="active"> Reset password </h2>
+        <form action="#" method="POST">
+            <img src="/images/key.png" class="avatar">
+            <input type="text" class="text" id="otp" name="otp">
+            <span>OTP</span>
+            <br>
+            <input type="password" class="text" id="password" name="password">
+            <span>New password</span>
+            <br>
+            <input type="password" class="text" id="password2" name="password2">
+            <span>Confirm password</span>
+            <br>
+            <button class="repass">
+                Update
+            </button>
+        </form>
+    </div>
+</body>
