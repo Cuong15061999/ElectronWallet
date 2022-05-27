@@ -1,2 +1,323 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<style>
+    :root {
+        --main-color: #65aab6;
+        --color-dark: #1D2231;
+        --text-grey: #8390a2;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        list-style-type: none;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .sidebar {
+        width: 345px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: var(--main-color);
+        z-index: 100;
+    }
+
+    .sidebar-brand {
+        height: 90px;
+        padding: 1rem 0rem 1rem 2rem;
+        color: #fff;
+    }
+
+    .sidebar-brand span {
+        display: inline-block;
+        padding-right: 1rem;
+    }
+
+    .sidebar-brand span:hover {
+        background-color: red;
+    }
+
+    .sidebar-menu li {
+        width: 100%;
+        margin-bottom: 1.7rem;
+        padding-left: 2rem;
+    }
+
+    .sidebar-menu a {
+        padding-left: 1rem;
+        display: block;
+        color: #fff;
+        font-size: 1.1rem;
+    }
+
+    .sidebar-menu a.active {
+        background: #fff;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        color: var(--main-color);
+        border-radius: 30px 0px 0px 30px;
+        -webkit-border-radius: 30px 0px 0px 30px;
+        -moz-border-radius: 30px 0px 0px 30px;
+        -ms-border-radius: 30px 0px 0px 30px;
+        -o-border-radius: 30px 0px 0px 30px;
+    }
+
+    .sidebar-menu a span:first-child {
+        font-size: 1.5rem;
+        padding-right: 1rem;
+    }
+
+    .main-content {
+        margin-left: 345px;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        left: 345px;
+        width: calc(100% - 345px);
+        top: 0;
+        z-index: 100;
+    }
+
+    header h2 {
+        color: #222;
+    }
+
+    header label span {
+        font-size: 1.7rem;
+        padding-right: 1rem;
+    }
+
+    .search-wrapper {
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        overflow-x: hidden;
+    }
+
+    .search-wrapper span {
+        display: inline-block;
+        padding: 0rem 1rem;
+        font-size: 1.5rem;
+    }
+
+    .search-wrapper input {
+        height: 100%;
+        padding: 0.5rem;
+        border: none;
+        outline: none;
+    }
+
+    .user-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .user-wrapper img {
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        margin-right: 1rem;
+    }
+
+    .user-wrapper small {
+        display: inline-block;
+        color: var(--text-grey);
+    }
+
+    main {
+        margin-top: 90px;
+        padding: 2rem 1.5rem;
+        background: #f1f5f9;
+        min-height: 5px;
+    }
+
+    .cards {
+        display: grid;
+        background: #f2f7f9;
+        grid-template-columns: repeat(4, 1fr);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .cards .card-single {
+        /* justify-content: space-between; */
+        margin: 5px 5px;
+        border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+    }
+
+    .card-single a img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    }
+
+    .content {
+        padding-left: 370px;
+        padding-right: 1.4rem;
+        background: #f1f5f9;
+    }
+
+    .content table {
+        width: 100%;
+        max-height: 100%;
+        padding: 0;
+        margin: 0;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+</style>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2><span></span>Moblie Bank</h2>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <span class="las la-home" class="active">Trang chủ</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="las la-in">Nạp tiền</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="las la-clipboard-list">Rút tiền</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="las la-shipping-bag">Mua thẻ điện thoại</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="las la-receipt">Khác</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <h2>
+                <label for="">
+                    <span class="las la-bars"> </span>
+                </label> Trang chủ
+            </h2>
+
+            <div class="search-wrapper">
+                <a href="">
+                    <span class="las la-search">
+                        <input type="search" placeholder="Search Here">
+                    </span>
+                </a>
+
+            </div>
+
+            <div class="user-wrapper">
+                <img src="/images/1.jpg" width="40px" height="40px" alt="">
+                <div>
+                    <h4>Name</h4>
+                    <small>Money</small>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="cards">
+                <div class="card-single">
+                    <div>
+                        <a href=""><img src="/images/1.jpg" alt=""></a>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h3>Tổng tiền</h3>
+                        <span>............đ</span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h3>Trạng thái</h3>
+                        <span>Đang hoạt động</span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <a href="">Thông tin chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </main>
+    <div class="content">
+        <label for="">Lịch sử giao dịch</label>
+        <table border="" style="word-wrap:break-word">
+            <tr>
+                <th rowspan="2">Ngày tháng</th>
+                <th rowspan="2">Tên giao dịch</th>
+                <th rowspan="2">Người thực hiện</th>
+                <th colspan="2">Số tiền</th>
+                <th rowspan="2">Trạng thái</th>
+            </tr>
+            <tr>
+                <th>In</th>
+                <th>At</th>
+            </tr>
+            <tr>
+                <td>03/08/1993</td>
+                <td>Chuyền tiền</td>
+                <td>Trần Đức Anh</td>
+                <td>####</td>
+                <td>####</td>
+                <td>Thất bại</td>
+
+            </tr>
+
+            <tr>
+                <td>21/05/2022</td>
+                <td>Chuyền tiền</td>
+                <td>Nguyễn Thu Uyên</td>
+                <td>####</td>
+                <td>####</td>
+                <td>Thành công</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+</body>
