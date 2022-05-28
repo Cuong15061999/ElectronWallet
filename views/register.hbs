@@ -105,6 +105,9 @@
 <body>
     <div class="page">
         <h2 class="active"> Register </h2>
+         {{#if msg}}
+                <div style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">{{msg}}</div>
+            {{/if}}
         <form action="/register" method="POST">
             <img src="/images/add-user.png" class="avatar">
             <input type="text" class="text" id="name" name="name">
@@ -126,8 +129,8 @@
             <span>Phone Number</span>
             <br>
             <br>
-            <input type="file" id="id1" accept="image/png, image/jpeg" name="image1">
-            <input type="file" id="id2" accept="image/png, image/jpeg" name="image2">
+            <input type="file" id="id1" accept="image/png, image/jpeg" name="image">
+            <input type="file" id="id2" accept="image/png, image/jpeg" name="image">
             <br>
             <span>UPload ID Number</span>
             <button class="signup" type="submit">

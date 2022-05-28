@@ -105,7 +105,10 @@
 <body>
     <div class="page">
         <h2 class="active"> Update Password </h2>
-        <form action="#" method="POST">
+        <form action="/ChangePass" method="POST">
+        {{#if msg}}
+             <div>{{msg}}</div>
+        {{/if}}
             <img src="/images/key.png" class="avatar">
             <br>
             <input type="password" class="text" id="oldpassword" name="oldpassword">
@@ -114,10 +117,10 @@
             <input type="password" class="text" id="newpassword" name="newpassword">
             <span>New password</span>
             <br>
-            <input type="password" class="text" id="newpassword2" name="newpassword2">
+            <input type="password" class="text" id="newpassword" name="newpassword">
             <span>Confirm password</span>
             <br>
-            <button class="signin">
+            <button class="signin" type="submit">
                 Update
             </button>
         </form>
