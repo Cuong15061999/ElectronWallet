@@ -2,7 +2,7 @@
     body,
     .signin,
     .signup {
-        background-color: #e493ff;
+        background-color: mediumspringgreen;
         font-family: 'Montserrat', sans-serif;
         color: rgb(19, 18, 18);
         font-size: 14px;
@@ -14,21 +14,26 @@
         height: 200px;
         margin-left: 24%;
         margin-top: 5px;
+        padding-bottom: 20px;
         display: block;
     }
 
     .page {
-        position: relative;
-        height: 650px;
+        position: absolute;
+        height: max-content;
         width: 405px;
-        margin: auto;
-        padding: 100px 70px;
-        background-color: rgb(187, 152, 106);
-        background-size: cover;
+        right: 0;
+        top: 5%;
+        margin-right: 50px;
+        padding: 30px 70px;
+        background-color: #000000;
+        color: white;
+        /*background-size: cover;*/
     }
 
-    form {
-        padding-top: -50px;
+    .header-container{
+        width: 100%;
+        text-align: center;
     }
 
     .active {
@@ -69,9 +74,12 @@
     }
 
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="email"],
+    input[type="date"] {
         font-family: 'Montserrat', sans-serif;
-        color: #fff;
+        color: #000;
+        background-color: #FFFFFF;
     }
 
     label {
@@ -101,41 +109,52 @@
         text-decoration: none;
         color: rgba(10, 19, 120, 0.2);
     }
+
+    .img-login{
+        position: absolute;
+        top: 15%;
+        left: 10%;
+    }
+
 </style>
-<body>
-    <div class="page">
+
+<div class="img-login">
+    <img src="/images/digital-wallet.png">
+</div>
+<div class="page">
+    <div class="header-container">
         <h2 class="active"> Register </h2>
-         {{#if msg}}
-                <div style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">{{msg}}</div>
-            {{/if}}
-        <form action="/register" method="POST">
-            <img src="/images/add-user.png" class="avatar">
-            <input type="text" class="text" id="name" name="name">
-            <span>Name</span>
-            <br>
-            <input type="text" class="text" id="address" name="address">
-            <span>address</span>
-            <br>
-            <br>
-            <input type="date" class="text" id="date" name="date">
-            <span>Date</span>
-            <br>
-            <br>
-            <input type="email" class="text" id="email" name="email">
-            <span>Email</span>
-            <br>
-            <br>
-            <input type="text" class="text" id="phone" pattern="[0-9]{10,11}" name="phone">
-            <span>Phone Number</span>
-            <br>
-            <br>
-            <input type="file" id="id1" accept="image/png, image/jpeg" name="image">
-            <input type="file" id="id2" accept="image/png, image/jpeg" name="image2">
-            <br>
-            <span>UPload ID Number</span>
-            <button class="signup" type="submit">
-                Sign Up
-            </button>
-        </form>
     </div>
-</body>
+    {{#if msg}}
+        <div style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">{{msg}}</div>
+    {{/if}}
+    <form action="/register" method="POST">
+        <img src="/images/add-user.png" class="avatar">
+        <input type="text" class="text" id="name" name="name">
+        <span>Name</span>
+        <br>
+        <input type="text" class="text" id="address" name="address">
+        <span>address</span>
+        <br>
+        <br>
+        <input type="date" class="text" id="date" name="date">
+        <span>Date</span>
+        <br>
+        <br>
+        <input type="email" class="text" id="email" name="email">
+        <span>Email</span>
+        <br>
+        <br>
+        <input type="text" class="text" id="phone" pattern="[0-9]{10,11}" name="phone">
+        <span>Phone Number</span>
+        <br>
+        <br>
+        <input type="file" id="id1" accept="image/png, image/jpeg" name="image1">
+        <input type="file" id="id2" accept="image/png, image/jpeg" name="image2">
+        <br>
+        <span>UPload ID Number</span>
+        <button class="signup" type="submit">
+            Sign Up
+        </button>
+    </form>
+</div>
