@@ -2,7 +2,7 @@
     body,
     .signin,
     .signup {
-        background-color: #e493ff;
+        background-color: mediumspringgreen;
         font-family: 'Montserrat', sans-serif;
         color: rgb(19, 18, 18);
         font-size: 14px;
@@ -14,21 +14,25 @@
         height: 200px;
         margin-left: 24%;
         margin-top: 5px;
+        padding-bottom: 20px;
         display: block;
     }
 
     .page {
-        position: relative;
-        height: 650px;
+        position: absolute;
+        height: 90%;
         width: 405px;
-        margin: auto;
-        padding: 100px 70px;
+        right: 0;
+        top: 5%;
+        margin-right: 50px;
+        padding: 0 70px;
         background-color: rgb(187, 152, 106);
-        background-size: cover;
+        /*background-size: cover;*/
     }
 
-    form {
-        padding-top: -50px;
+    .header-container{
+        width: 100%;
+        text-align: center;
     }
 
     .active {
@@ -71,7 +75,8 @@
     input[type="text"],
     input[type="password"] {
         font-family: 'Montserrat', sans-serif;
-        color: #fff;
+        color: #000;
+        background-color: #FFFFFF;
     }
 
     label {
@@ -101,29 +106,38 @@
         text-decoration: none;
         color: rgba(10, 19, 120, 0.2);
     }
+
+    .img-login{
+        position: absolute;
+        top: 15%;
+        left: 10%;
+    }
 </style>
 
-<body>
-    <div class="page">
+<div class="img-login">
+    <img src="/images/digital-wallet.png">
+</div>
+<div class="page">
+    <div class="header-container">
         <h2 class="active"> Login </h2>
-        <form action="#" method="POST">
-            <img src="/images/user.png" class="avatar">
-            <input type="text" class="text" id="username" name="username"> 
-            <span>username</span>
-            <br>
-            <br>
-            <input type="password" class="text" id="password" name="password">
-            <span>password</span>
-            <br>
-            <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
-            <label for="checkbox-1-1">Keep me Signed in</label>
-            <button class="signin">
-                Login
-            </button>
-            <br>
-            <a id="fg" href="register">Register</a>
-            <br> <br>
-            <a id="fg" href="forgotpass">Forgot Password?</a>
-        </form>
     </div>
-</body>
+    <form action="#" method="POST">
+        <img src="/images/user.png" class="avatar">
+        <input type="text" class="text" id="username" name="username">
+        <span>username</span>
+        <br>
+        <br>
+        <input type="password" class="text" id="password" name="password">
+        <span>password</span>
+        <br>
+        <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
+        <label for="checkbox-1-1">Keep me Signed in</label>
+        <button class="signin">
+            Login
+        </button>
+        <br>
+        <a id="fg" href="register">Register</a>
+        <br> <br>
+        <a id="fg" href="forgotpass">Forgot Password?</a>
+    </form>
+</div>

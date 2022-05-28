@@ -2,7 +2,7 @@
     body,
     .signin,
     .signup {
-        background-color: #e493ff;
+        background-color: mediumspringgreen;
         font-family: 'Montserrat', sans-serif;
         color: rgb(19, 18, 18);
         font-size: 14px;
@@ -14,21 +14,26 @@
         height: 200px;
         margin-left: 24%;
         margin-top: 5px;
+        padding-bottom: 20px;
         display: block;
     }
 
     .page {
-        position: relative;
-        height: 650px;
+        position: absolute;
+        height: max-content;
         width: 405px;
-        margin: auto;
-        padding: 100px 70px;
-        background-color: rgb(187, 152, 106);
-        background-size: cover;
+        right: 0;
+        top: 20%;
+        margin-right: 50px;
+        padding: 30px 70px;
+        background-color: #000000;
+        color: white;
+        /*background-size: cover;*/
     }
 
-    form {
-        padding-top: -50px;
+    .header-container{
+        width: 100%;
+        text-align: center;
     }
 
     .active {
@@ -69,9 +74,12 @@
     }
 
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="email"],
+    input[type="date"] {
         font-family: 'Montserrat', sans-serif;
-        color: #fff;
+        color: #000;
+        background-color: #FFFFFF;
     }
 
     label {
@@ -101,18 +109,28 @@
         text-decoration: none;
         color: rgba(10, 19, 120, 0.2);
     }
-</style>
-<body>
-    <div class="page">
-        <h2 class="active"> Reset password </h2>
-        <img src="/images/key.png" class="avatar">
-        <form action="#" method="POST">
 
-            <input type="email" class="text" id="email" name="email">
-            <span>Email</span>
-            <button class="repass" href="OtpPage">
-                Send
-            </button>
-        </form>
-    </div>
-</body>
+    .img-login{
+        position: absolute;
+        top: 15%;
+        left: 10%;
+    }
+
+</style>
+
+<div class="img-login">
+    <img src="/images/digital-wallet.png">
+</div>
+
+<div class="page">
+    <h2 class="active"> Reset password </h2>
+    <img src="/images/key.png" class="avatar">
+    <form action="#" method="POST">
+
+        <input type="email" class="text" id="email" name="email">
+        <span>Email</span>
+        <button class="repass" href="OtpPage">
+            Send
+        </button>
+    </form>
+</div>
