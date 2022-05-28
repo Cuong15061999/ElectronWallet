@@ -105,8 +105,9 @@
 <body>
     <div class="page">
         <h2 class="active"> Reset password </h2>
-        <form action="#" method="POST">
+        <form action="/OtpPage" method="POST">
             <img src="/images/key.png" class="avatar">
+            <input type="hidden" class="text" id="email" name="email" value={{emailinfo}}>
             <input type="text" class="text" id="otp" name="otp">
             <span>OTP</span>
             <br>
@@ -116,7 +117,7 @@
             <input type="password" class="text" id="password2" name="password2">
             <span>Confirm password</span>
             <br>
-            <button class="repass">
+            <button class="repass" type="submit">
                 Update
             </button>
         </form>
