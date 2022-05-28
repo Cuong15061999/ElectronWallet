@@ -106,7 +106,10 @@
 <body>
     <div class="page">
         <h2 class="active"> Login </h2>
-        <form action="#" method="POST">
+         <form action="/login" method="POST">
+            {{#if msg}}
+                <div style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">{{msg}}</div>
+            {{/if}}
             <img src="/images/user.png" class="avatar">
             <input type="text" class="text" id="username" name="username"> 
             <span>username</span>
@@ -117,7 +120,7 @@
             <br>
             <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
             <label for="checkbox-1-1">Keep me Signed in</label>
-            <button class="signin">
+            <button class="signin" type="submit">
                 Login
             </button>
             <br>
