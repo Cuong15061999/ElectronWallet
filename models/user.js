@@ -10,7 +10,7 @@ var userSchema =new mongoose.Schema({
     username: String,//random 10 number (take phone number to be a username)
     password: String,//randme 6 word
     CreateAt: Date,
-    Money: Number[10],
+    Money: Number[10],//=10 000 000(khoi tao.)
 
     role: String, //admin and user
     newUser: Number,//0 la` user moi, 1 la` user cu~
