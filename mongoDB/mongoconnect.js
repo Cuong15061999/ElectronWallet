@@ -37,6 +37,7 @@ const mongoconnect = {
                     username: 'admin12345',
                     password: 'admin1',
                     CreateAt: new Date('1999-06-15'),
+                    Money: 10000000,
 
                     role: 'admin', //admin and user
                     newUser: 1, //0 la` user moi, 1 la` user cu

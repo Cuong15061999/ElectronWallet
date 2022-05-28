@@ -71,9 +71,12 @@ router.get('/login', async(req, res, )=>{
   return res.render('login')
 });
 
+//sai qua nhieu`******
 router.post('/login', async(req, res, )=>{
   let login= await User.findOne({username : req.body.username,password : req.body.password});
   let newuser= await User.findOne({username : req.body.username,password : req.body.password,newUser:1})//0 la` user moi, 1 la` user cu~
+  console.log(login)
+  console.log(newuser)
   if (login){
     if (newuser){
       return res.render('index')}
@@ -82,7 +85,7 @@ router.post('/login', async(req, res, )=>{
     }
   }
   else{
-    return res.render('login',{username: req.body.username, msg:'sai tk mk'})
+    return res.render('ChangePass',{username: req.body.username, msg:'sai tk mk'})
   }
 });
 // Register
@@ -94,6 +97,8 @@ router.get('/register', function (req, res, next) {
 router.post('/register', async(req, res, )=>{
   let phone= await User.findOne({phone : req.body.phone});
   let email= await User.findOne({email : req.body.email});
+  let username1 = req.body.phone;
+  let password = Math.floor(100000 + Math.random() * 900000)
   if (phone || email){
     return res.render('register',{username: req.body.username, msg:'Số điện Thoại hoặc Email đã dùng'})
   }
@@ -104,18 +109,19 @@ router.post('/register', async(req, res, )=>{
       fullname: req.body.name,
       birthDay: req.body.date,
       address: req.body.address,
-      Photos:[],
+      Photos:[req.body.image, req.body.image2],
 
-      username: req.body.phone,
-      password: Math.floor(100000 + Math.random() * 900000),
+      username: username1,
+      password: password,
       CreateAt: Date.now(),
+      Money: 10000000,
 
       role: 'user',
       newUser: 0,
       failCount: 0,
       actStatus: 'Cho Xac Minh',
       loginStatus: '0',
-    }).save().then(()=>res.redirect('login',{msg:username,passsword}));
+    }).save().then(()=>res.redirect('login'));
 }});
 
 //forgot pass
@@ -214,23 +220,21 @@ router.post('/OtpPage', function (req, res, next) {
 
 //Change pass
 router.post('/ChangePass', async(req, res)=>{
-  let login= await User.findByIdAndUpdate({password: req.body.oldpassword},{username:usernmae},{new:true});
+  console.log(req.body.username)
+  // let login= await User.findByIdAndUpdate({password: req.body.oldpassword},{username:usernmae},{new:true});
   
-  if(login){
-    User.updateMany(
-      {newUser:'0'},{$set:{passsword:req.body.newpassword,newUser:'1'}
-      }
-    )
-  }else{
-    return res.render('ChangePass',{username: req.body.username, msg:'Sai mật khẩu'})}
+  // if(login){
+  //   User.updateMany(
+  //     {newUser:'0'},{$set:{passsword:req.body.newpassword,newUser:'1'}
+  //     }
+  //   )
+  // }else{
+    //return res.render('ChangePass',{username: req.body.username, msg:'Sai mật khẩu'})}
 });
 
 router.get('/ChangePass', function(req, res, next) {
   return res.render('ChangePass')
 });
 
-//index
-router.get('/index', function(req, res, next) {
-  return res.render('index')
-});
+
 module.exports = router;
