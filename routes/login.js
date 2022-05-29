@@ -63,44 +63,154 @@ const sendOtpVerificationEmail = async (email, res) => {
     })
   }
 };
+const sendUserNamePassword = async (email, username, password, res) => {
+  console.log(email + " " + username + " " + password)
+  try {
 
+    //transporter
+    let transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      service: 'Gmail',
+      auth: {
+        user: 'phamvqcuong99@gmail.com', // generated ethereal user
+        pass: 'Quoccuong_999', // generated ethereal password
+      },
+    });
+
+    // verify connection configuration
+    transporter.verify(function (error, success) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Server is ready to take our messages");
+      }
+    });
+
+    //mail options
+    const mailOptions = {
+      from: 'phamvqcuong99@gmail.com',
+      to: email,
+      subject: " Otp to Verify Your Email",
+      html: `<p>Here is your UserName <b>${username}</b> and your Password: <b>${password}</b> </p>`
+    }
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+  } catch (error) {
+    res.json({
+      status: "failed",
+      message: error.message,
+    })
+  }
+};
 /* GET home page. */
 //Login
-router.get('/login', async(req, res, )=>{ 
-
+router.get('/login', async (req, res,) => {
   return res.render('login')
 });
 
-//sai qua nhieu`******
-router.post('/login', async(req, res, )=>{
-  let login= await User.findOne({username : req.body.username,password : req.body.password});
-  let newuser= await User.findOne({username : req.body.username,password : req.body.password,newUser:1})//0 la` user moi, 1 la` user cu~
-  console.log(login)
-  console.log(newuser)
-  if (login){
-    if (newuser){
-      return res.render('index')}
-    else{
-      return res.render('ChangePass')
+router.post('/login', async (req, res,) => {
+  let login = await User.findOne({ username: req.body.username });
+  if (!login) {
+    return res.render('login', { msg: 'Invalid account. Pls Create One' })
+  } else {
+    if (req.body.password === login.password) {// if password right
+      //save username in env
+      req.session.user = login.username
+      console.log('save username ' + req.session.user)
+
+      //if account be disabled
+      if (login.actStatus === "Vo Hieu Hoa") {
+        return res.render('login', { msg: 'Your Account was Disable. Pls contact admin.' })
+      } else if (login.newUser === 0) {
+
+        //if you are new user. move to changepass page
+        return res.redirect('ChangePass')
+      } else if (login.newUser === 1) { // if user is old user
+        if (login.role === "user") {
+          //move to page index and update loginstatus, failcount
+          User.updateOne({ username: req.body.username },
+            { loginStatus: "0", failCount: 0 },
+            function (err, docs) {
+              if (err) {
+                console.log(err.message)
+              }
+              else {
+                return res.redirect('index')
+              }
+            });
+        } else {
+          //move to page admin
+          return res.redirect('admin')
+        }
+      }
+    } else {//if your password was wrong
+      //bi trang thai vo hieu hoa va` dang nhap sai
+      if (login.actStatus === "Vo Hieu Hoa") {
+        return res.render('login', { msg: 'Your Account was Disable. Pls contact admin.' })
+      }
+      //sai 3 lan va` co trang thai bat thuong
+      if (login.loginStatus === "Dang nhap bat thuong" && login.failCount === 3) {
+        User.updateOne({ username: req.body.username }, { actStatus: "Vo Hieu Hoa" },
+          function (err, docs) {
+            if (err) {
+              console.log(err)
+            }
+            else {
+              return res.render('login', { msg: 'Your Account was disable.' })
+            }
+          });
+        //sai 3 lan va` chua co trang thai bat thuong
+      } else if (login.loginStatus === '0' && login.failCount === 3) {
+        User.updateOne({ username: req.body.username }, { loginStatus: "Dang nhap bat thuong", failCount: 0 },
+          function (err, docs) {
+            if (err) {
+              console.log(err)
+            }
+            else {
+              return res.render('login', { msg: 'You already login failed 3 time. Be Careful' })
+            }
+          });
+        //nhưng tl khac de lam` tang bien failcount
+      } else {
+        let Count = login.failCount + 1
+        User.updateOne({ username: req.body.username }, { failCount: Count },
+          function (err, docs) {
+            if (err) {
+              console.log(err)
+            }
+            else {
+              return res.render('login', { msg: 'Wrong Password ' + Count + ' times' })
+            }
+          });
+      }
     }
   }
-  else{
-    return res.render('ChangePass',{username: req.body.username, msg:'sai tk mk'})
-  }
 });
+
 // Register
 router.get('/register', function (req, res, next) {
 
   return res.render('register')
 });
 
-router.post('/register', async(req, res, )=>{
-  let phone= await User.findOne({phone : req.body.phone});
-  let email= await User.findOne({email : req.body.email});
+router.post('/register', async (req, res,) => {
+  let phone = await User.findOne({ phone: req.body.phone });
+  let email = await User.findOne({ email: req.body.email });
+  console.log(req.body.photo1 + " " + req.body.photo2)
+  let userEmail = req.body.email
   let username1 = req.body.phone;
   let password = Math.floor(100000 + Math.random() * 900000)
-  if (phone || email){
-    return res.render('register',{username: req.body.username, msg:'Số điện Thoại hoặc Email đã dùng'})
+  if (phone || email) {
+    return res.render('register', { msg: 'Phone Or Email Already Used' })
   }
   else {
     new User({
@@ -109,7 +219,7 @@ router.post('/register', async(req, res, )=>{
       fullname: req.body.name,
       birthDay: req.body.date,
       address: req.body.address,
-      Photos:[req.body.image, req.body.image2],
+      Photos: [req.body.photo1, req.body.photo2],
 
       username: username1,
       password: password,
@@ -121,8 +231,13 @@ router.post('/register', async(req, res, )=>{
       failCount: 0,
       actStatus: 'Cho Xac Minh',
       loginStatus: '0',
-    }).save().then(()=>res.redirect('login'));
-}});
+    }).save()
+      .then(() => {
+        sendUserNamePassword(userEmail, username1, password, res)
+        return res.render('login', { msg1: 'UserName & Password sended to your email' })
+      });
+  }
+});
 
 //forgot pass
 router.get('/forgotpass', function (req, res, next) {
@@ -144,7 +259,7 @@ router.post('/forgotpass', function (req, res, next) {
 });
 
 //Opt Page
-router.get('/OtpPage', function (req, res, next){
+router.get('/OtpPage', function (req, res, next) {
   return res.render('OtpPage')
 })
 router.post('/OtpPage', function (req, res, next) {
@@ -206,9 +321,9 @@ router.post('/OtpPage', function (req, res, next) {
                 });
               return res.render('login')
             }
-            else{
+            else {
               console.log('2 password must be the same')
-              return res.render('OtpPage',{ emailinfo: email })
+              return res.render('OtpPage', { emailinfo: email })
             }
 
           } else {
@@ -218,24 +333,44 @@ router.post('/OtpPage', function (req, res, next) {
       }
     })
   }
-  
+
 });
 
 //Change pass
-router.post('/ChangePass', async(req, res)=>{
-  console.log(req.body.username)
-  // let login= await User.findByIdAndUpdate({password: req.body.oldpassword},{username:usernmae},{new:true});
-  
-  // if(login){
-  //   User.updateMany(
-  //     {newUser:'0'},{$set:{passsword:req.body.newpassword,newUser:'1'}
-  //     }
-  //   )
-  // }else{
-    //return res.render('ChangePass',{username: req.body.username, msg:'Sai mật khẩu'})}
+router.post('/ChangePass', async (req, res) => {
+  console.log('username already saved: ' + req.session.user)
+  let UserChange = await User.findOne({ username: req.session.user });
+  if (!UserChange) {
+    return res.render('ChangePass', { msg: "Can't find Username in Data" })
+  } else {
+    //compare old password
+    if (UserChange.password === req.body.oldpassword) {
+      //compare 2 new password
+      if (req.body.newpassword === req.body.newpassword2) {
+        //update if all was right
+        User.updateOne({ username: req.session.user },
+          { password: req.body.newpassword, newUser: 1, loginStatus: "0", failCount: 0 },
+          function (err, docs) {
+            if (err) {
+              console.log(err)
+            }
+            else {
+              return res.redirect('index')
+            }
+          });
+      } else {
+        //if 2 new password was wrong
+        return res.render('ChangePass', { msg: "New Password & Confirm Password are different" })
+      }
+    } else {
+      //if old password wrong
+      return res.render('ChangePass', { msg: "Your old password is wrong" })
+    }
+
+  }
 });
 
-router.get('/ChangePass', function(req, res, next) {
+router.get('/ChangePass', function (req, res, next) {
   return res.render('ChangePass')
 });
 

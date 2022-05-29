@@ -131,21 +131,23 @@
     <div class="header-container">
         <h2 class="active"> Login </h2>
     </div>
+    {{#if msg}}
+        <div style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">{{msg}}</div>
+    {{/if}}
+    {{#if msg1}}
+        <div style="color:rgb(18, 24, 18); background-color:rgb(79, 194, 17); padding: 10px 10px 10px 10px; margin-top: 10px">{{msg1}}</div>
+    {{/if}}
     <form action="/login" method="POST">
         <img src="/images/user.png" class="avatar">
-        <input type="text" class="text" id="username" name="username">
+        <input required type="text" class="text" id="username" name="username">
         <span id="username1">username</span>
-        <br>
-        <br>
-        <input type="password" class="text" id="password" name="password">
+        <input required type="password" class="text" id="password" name="password">
         <span id="password1">password</span>
-        <br>
         <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
         <label for="checkbox-1-1" id="checkbox">Keep me Signed in</label>
         <button class="signin">
             LOGIN
         </button>
-        <br>
         <a id="fg" href="register">Register</a>
         <br> <br>
         <a id="fg" href="forgotpass">Forgot Password?</a>

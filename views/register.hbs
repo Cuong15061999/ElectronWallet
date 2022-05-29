@@ -126,24 +126,25 @@
     {{#if msg}}
         <div style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">{{msg}}</div>
     {{/if}}
+
     <form action="/register" method="POST">
         <img src="/images/add-user.png" class="avatar">
-        <input type="text" class="text" id="name" name="name">
+        <input required type="text" class="text" id="name" name="name">
         <span>Name</span>
-        <input type="text" class="text" id="address" name="address">
+        <input required type="text" class="text" id="address" name="address">
         <span>address</span>
-        <input type="date" class="text" id="date" name="date">
+        <input required type="date" class="text" id="date" name="date">
         <span>Date</span>
-        <input type="email" class="text" id="email" name="email">
+        <input required type="email" class="text" id="email" name="email">
         <span>Email</span>
-        <input type="text" class="text" id="phone" pattern="[0-9]{10,11}" name="phone">
+        <input required type="text" class="text" id="phone" pattern="[0-9]{10,11}" name="phone">
         <span>Phone Number</span>
         <div>
-            <img src="/images/1.jpg" alt="" id="image11" style="height: 150px; width: 200px; display:flexbox">
-            <img src="/images/1.jpg" alt="" id="image22" style="height: 150px; width: 200px; display:flexbox">
+            <img src="/images/cmnd.png" alt="" id="image11" style="height: 150px; width: 200px; display:flexbox">
+            <img src="/images/cmnd2.jpg" alt="" id="image22" style="height: 150px; width: 200px; display:flexbox">
         </div>
-        <input style="display: inline-block" name="photo" type="file" accept="image/*" onchange="document.getElementById('image11').src = window.URL.createObjectURL(this.files[0])">
-        <input style="display: inline-block; position:absolute; right:10px" name="photo" type="file" accept="image/*" onchange="document.getElementById('image22').src = window.URL.createObjectURL(this.files[0])">
+        <input required style="display: inline-block" name="photo1" type="file" accept="image/*" onchange="document.getElementById('image11').src = window.URL.createObjectURL(this.files[0])">
+        <input required style="display: inline-block; position:absolute; right:10px" name="photo2" type="file" accept="image/*" onchange="document.getElementById('image22').src = window.URL.createObjectURL(this.files[0])">
         <p style="text-align: center;">PLEASE INPUT 2 FACE OF YOUR IDENTITY</p>
         <button class="signup" type="submit">
             SIGN UP

@@ -128,13 +128,13 @@
         <form action="/OtpPage" method="POST">
             <img src="/images/key.png" class="avatar">
             <input type="hidden" class="text" id="email" name="email" value={{emailinfo}}>
-            <input type="text" class="text" id="otp" name="otp">
+            <input required type="text" class="text" id="otp" name="otp">
             <span>OTP</span>
             <br>
-            <input type="password" class="text" id="password" name="password">
+            <input required type="password" class="text" id="password" name="password">
             <span>New password</span>
             <br>
-            <input type="password" class="text" id="password2" name="password2">
+            <input required type="password" class="text" id="password2" name="password2">
             <span>Confirm password</span>
             <br>
             <button class="repass">

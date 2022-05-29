@@ -27,7 +27,7 @@ app.use(require('cookie-parser')(secret.cookieSecret));
 app.use(require("express-session")(secret.sessionSecret));
 
 app.use('/', loginRouter);
-app.use('/users', usersRouter);
+app.use('/index', usersRouter);
 app.use('/admin', adminRouter);
 mongoConnect.connectDB();
 

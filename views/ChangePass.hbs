@@ -123,16 +123,21 @@
     <div class="header-container">
         <h2 class="active"> Update Password </h2>
     </div>
+    {{#if msg}}
+    <div
+        style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">
+        {{msg}}</div>
+    {{/if}}
     <form action="/ChangePass" method="POST">
         <img src="/images/key.png" class="avatar">
         <br>
-        <input type="password" class="text" id="oldpassword" name="oldpassword">
+        <input required type="password" class="text" id="oldpassword" name="oldpassword">
         <span>Old password</span>
         <br>
-        <input type="password" class="text" id="newpassword" name="newpassword">
+        <input required type="password" class="text" id="newpassword" name="newpassword">
         <span>New password</span>
         <br>
-        <input type="password" class="text" id="newpassword2" name="newpassword2">
+        <input required type="password" class="text" id="newpassword2" name="newpassword2">
         <span>Confirm password</span>
         <br>
         <button class="signin">
