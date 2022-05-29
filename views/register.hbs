@@ -10,11 +10,9 @@
     }
 
     .avatar {
-        width: 200px;
-        height: 200px;
-        margin-left: 24%;
-        margin-top: 5px;
-        padding-bottom: 20px;
+        width: 100px;
+        height: 100px;
+        margin-left: 38%;
         display: block;
     }
 
@@ -132,29 +130,23 @@
         <img src="/images/add-user.png" class="avatar">
         <input type="text" class="text" id="name" name="name">
         <span>Name</span>
-        <br>
         <input type="text" class="text" id="address" name="address">
         <span>address</span>
-        <br>
-        <br>
         <input type="date" class="text" id="date" name="date">
         <span>Date</span>
-        <br>
-        <br>
         <input type="email" class="text" id="email" name="email">
         <span>Email</span>
-        <br>
-        <br>
         <input type="text" class="text" id="phone" pattern="[0-9]{10,11}" name="phone">
         <span>Phone Number</span>
-        <br>
-        <br>
-        <input type="file" id="id1" accept="image/png, image/jpeg" name="image1">
-        <input type="file" id="id2" accept="image/png, image/jpeg" name="image2">
-        <br>
-        <span>UPload ID Number</span>
+        <div>
+            <img src="/images/1.jpg" alt="" id="image11" style="height: 150px; width: 200px; display:flexbox">
+            <img src="/images/1.jpg" alt="" id="image22" style="height: 150px; width: 200px; display:flexbox">
+        </div>
+        <input style="display: inline-block" name="photo" type="file" accept="image/*" onchange="document.getElementById('image11').src = window.URL.createObjectURL(this.files[0])">
+        <input style="display: inline-block; position:absolute; right:10px" name="photo" type="file" accept="image/*" onchange="document.getElementById('image22').src = window.URL.createObjectURL(this.files[0])">
+        <p style="text-align: center;">PLEASE INPUT 2 FACE OF YOUR IDENTITY</p>
         <button class="signup" type="submit">
-            Sign Up
+            SIGN UP
         </button>
     </form>
 </div>

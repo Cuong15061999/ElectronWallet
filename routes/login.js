@@ -144,6 +144,9 @@ router.post('/forgotpass', function (req, res, next) {
 });
 
 //Opt Page
+router.get('/OtpPage', function (req, res, next){
+  return res.render('OtpPage')
+})
 router.post('/OtpPage', function (req, res, next) {
   let { email, otp, password, password2 } = req.body;
   if (!email || !otp || !password || !password2) {

@@ -26,7 +26,7 @@
         top: 5%;
         margin-right: 50px;
         padding: 0 70px;
-        background-color: rgb(187, 152, 106);
+        background-color: #000;
         /*background-size: cover;*/
     }
 
@@ -37,6 +37,7 @@
 
     .active {
         border-bottom: 2px solid #1161ed;
+        color: #FFFFFF;
     }
 
     h2 {
@@ -97,14 +98,22 @@
         margin-top: 20px;
         border: none;
     }
-
+    #username1{
+        color: #FFFFFF;
+    }
+    #password1{
+        color: #FFFFFF;
+    }
+    #checkbox{
+        color: #FFFFFF;
+    }
     #fg {
         text-align: center;
         display: block;
         top: 30px;
         position: relative;
         text-decoration: none;
-        color: rgba(10, 19, 120, 0.2);
+        color: #FFFFFF;
     }
 
     .img-login{
@@ -117,6 +126,7 @@
 <div class="img-login">
     <img src="/images/digital-wallet.png">
 </div>
+
 <div class="page">
     <div class="header-container">
         <h2 class="active"> Login </h2>
@@ -124,16 +134,16 @@
     <form action="/login" method="POST">
         <img src="/images/user.png" class="avatar">
         <input type="text" class="text" id="username" name="username">
-        <span>username</span>
+        <span id="username1">username</span>
         <br>
         <br>
         <input type="password" class="text" id="password" name="password">
-        <span>password</span>
+        <span id="password1">password</span>
         <br>
         <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
-        <label for="checkbox-1-1">Keep me Signed in</label>
+        <label for="checkbox-1-1" id="checkbox">Keep me Signed in</label>
         <button class="signin">
-            Login
+            LOGIN
         </button>
         <br>
         <a id="fg" href="register">Register</a>

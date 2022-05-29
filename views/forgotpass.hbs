@@ -38,6 +38,7 @@
 
     .active {
         border-bottom: 2px solid #1161ed;
+
     }
 
     h2 {
@@ -121,14 +122,15 @@
 </div>
 
 <div class="page">
-    <h2 class="active"> Reset password </h2>
+    <div class="header-container">
+        <h2 class="active"> Reset password </h2>
+    </div>
     <img src="/images/key.png" class="avatar">
     <form action="/forgotpass" method="POST">
-
         <input type="email" class="text" id="email" name="email">
         <span>Email</span>
         <button class="repass" type="submit">
-            Send
+            SEND
         </button>
     </form>
 </div>
