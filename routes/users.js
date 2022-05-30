@@ -28,15 +28,20 @@ router.get('/', function (req, res, next) {
 });
 
 //THONG TIN CHI TIET
-router.get('/profile', function (req, res, next) {
+router.get('/profile',  function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
 
-
-  return res.render('profile')
+  User.findOne({ username: req.session.user }, function(err, users){
+    if(err){
+      throw err
+    }else{
+      return res.render('profile',{user:users})
+    }
+  });
 });
 
 //Nap & Rut TIEN
