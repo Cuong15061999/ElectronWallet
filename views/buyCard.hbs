@@ -250,8 +250,6 @@
             margin: 0;
             box-shadow: 2px 2px 5px rgb(44, 26, 26);
         }
-
-        
     }
 
 
@@ -711,7 +709,6 @@
 
     @media screen and (min-width: 1200px) {}
 </style>
-
 <body>
     <div class="sidebar">
         <div class="sidebar-brand">
@@ -782,60 +779,53 @@
                 </div>
             </div>
         </header>
-
-        <main>
-            <div class="cards">
-                <a href=""><img src="/images/1.jpg" alt=""></a>
-
-                <div class="card-single">
-                    <div>
-                        <h3>Money: <span>1000000000đ</span></h3>
-                        <h3>Status: <span>Đang hoạt động</span></h3>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <!-- <a href="">
-                            <h4>Thông tin chi tiết</h4>
-                        </a> -->
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <a href="/index/profile">
-                            <h4>Thông tin chi tiết</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </main>
     </div>
 
     <div class="content">
-        <h1 style="text-align: center">Lịch sử giao dịch</h1>
-            <table border="1" style="word-wrap:break-word">
-                <tr>
-                    <th style="height: 50px;" rowspan="2">Ngày tháng</th>
-                    <th style="height: 50px;" rowspan="2">Tên giao dịch</th>
-                    <th style="height: 50px;" rowspan="2">Người Gửi</th>
-                    <th style="height: 50px;" rowspan="2">Người Nhận</th>
-                    <th style="height: 50px;" rowspan="2">Số tiền</th>
-                    <th style="height: 50px;" rowspan="2">Trạng thái</th>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                    <td style="height: 30px; text-align: center">03/08/1993</td>
-                    <td style="height: 30px; text-align: center">Chuyền tiền</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">####</td>
-                    <td style="height: 30px; text-align: center">Thất bại</td>
+        <div class="container">
+            <div class="title">Mua thẻ điện thoại</div>
+            <div class="main-content2">
+                <form action="/index/buyCard" method="POST">
+                    <div class="buyCard-details">
+                        <div class="input-box">
+                            <span class="">Chọn mạng di động:</span>
+                            <select name="Company" id="cars">
+                                <option value="Viettel">Viettel</option>
+                                <option value="Mobiphone">Mobiphone</option>
+                                <option value="Vinaphone">Vinaphone</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <span class="">Chọn giá tiền</span>
+                            <select name="typeOfMoney" id="typeOfMoney">
+                                <option value="k10">10.000đ</option>
+                                <option value="k20">20.000đ</option>
+                                <option value="k50">50.000đ</option>
+                                <option value="k100">100.000đ</option>
+                                <option value="k200">200.000đ</option>
+                                <option value="k500">500.000đ</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <span class="amount">Nhập số lượng</span>
+                            <input type="text" placeholder="Nhập số lượng" required>
+                        </div>
+                    </div>
 
-                </tr>
-            </table>
+                    <div class="button">
+                        <input type="submit" value="Xác nhận mua">
+
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Hủy">
+                    </div>
+
+                    <h2 class="">Mua thẻ thành công / thất bại</h2>
+                    <span class="">Mã thẻ: </span>
+                    <br>
+                    <span class="">Số seri: </span>
+                </form>
+            </div>
+        </div>
     </div>
-    
 </body>

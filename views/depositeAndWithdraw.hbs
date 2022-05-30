@@ -250,8 +250,6 @@
             margin: 0;
             box-shadow: 2px 2px 5px rgb(44, 26, 26);
         }
-
-        
     }
 
 
@@ -782,60 +780,46 @@
                 </div>
             </div>
         </header>
-
-        <main>
-            <div class="cards">
-                <a href=""><img src="/images/1.jpg" alt=""></a>
-
-                <div class="card-single">
-                    <div>
-                        <h3>Money: <span>1000000000đ</span></h3>
-                        <h3>Status: <span>Đang hoạt động</span></h3>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <!-- <a href="">
-                            <h4>Thông tin chi tiết</h4>
-                        </a> -->
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <a href="/index/profile">
-                            <h4>Thông tin chi tiết</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </main>
     </div>
-
     <div class="content">
-        <h1 style="text-align: center">Lịch sử giao dịch</h1>
-            <table border="1" style="word-wrap:break-word">
-                <tr>
-                    <th style="height: 50px;" rowspan="2">Ngày tháng</th>
-                    <th style="height: 50px;" rowspan="2">Tên giao dịch</th>
-                    <th style="height: 50px;" rowspan="2">Người Gửi</th>
-                    <th style="height: 50px;" rowspan="2">Người Nhận</th>
-                    <th style="height: 50px;" rowspan="2">Số tiền</th>
-                    <th style="height: 50px;" rowspan="2">Trạng thái</th>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                    <td style="height: 30px; text-align: center">03/08/1993</td>
-                    <td style="height: 30px; text-align: center">Chuyền tiền</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">####</td>
-                    <td style="height: 30px; text-align: center">Thất bại</td>
+        <div class="container">
+            <div class="title">Nạp tiền & Rút tiền</div>
+            <div class="main-content2">
+                <form name="myFrom" action="/index/depositeAndWithdraw" method="POST">
+                    <div class="buyCard-details">
+                        <div class="input-box">
+                            <label for="">Chọn hình thức:</label>
 
-                </tr>
-            </table>
+                            <select name="depositAndwithdraw" id="cars">
+                                <option value="In">Nạp tiền</option>
+                                <option value="Out">Rút tiền</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <span class="cardID">Nhập số thẻ</span>
+                            <input id="cardID" type="text" placeholder="Nhập số thẻ" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="CVV">CVV</span>
+                            <input id="CVV" type="text" placeholder="Nhập số CVV" required>
+                        </div>
+                        <div class="input-box">
+                            <span class="AmountMoney">Số tiền nạp & rút</span>
+                            <input id="money" type="text" placeholder="Nhập số tiền" required>
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <input type="submit" value="Xác nhận">
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Hủy">
+                    </div>
+                    <h2 class="">Nạp tiền/Rút tiền thành công/thất bại</h2>
+
+                </form>
+            </div>
+        </div>
     </div>
-    
+
 </body>

@@ -250,8 +250,6 @@
             margin: 0;
             box-shadow: 2px 2px 5px rgb(44, 26, 26);
         }
-
-        
     }
 
 
@@ -419,14 +417,16 @@
     }
 
     .videos .video {
-        width: calc(100% /2);
-        height: 150px;
+        width: calc(75% /2);
+        height: 240px;
+        margin-left: 80px;
         border: 1px solid #fff;
         overflow: hidden;
     }
 
     .videos .video img {
-        max-width: 120%;
+        width: 98%;
+        height: 230px;
         transition: all 0.5s;
     }
 
@@ -782,60 +782,99 @@
                 </div>
             </div>
         </header>
-
-        <main>
-            <div class="cards">
-                <a href=""><img src="/images/1.jpg" alt=""></a>
-
-                <div class="card-single">
-                    <div>
-                        <h3>Money: <span>1000000000đ</span></h3>
-                        <h3>Status: <span>Đang hoạt động</span></h3>
-                    </div>
+    </div>
+    <div class="content">
+        <div id="wrapper">
+            <div class="info">
+                <div class="avatar">
+                    <img src="/images/1.jpg" alt="">
                 </div>
-
-                <div class="card-single">
-                    <div>
-                        <!-- <a href="">
-                            <h4>Thông tin chi tiết</h4>
-                        </a> -->
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <a href="/index/profile">
-                            <h4>Thông tin chi tiết</h4>
-                        </a>
-                    </div>
+                <div class="name">
+                    <p>Nguyễn Phúc Luân
+                        <i class="fas fa-check-circle"></i>
+                    </p>
                 </div>
             </div>
-        </main>
-    </div>
+            <ul class="analyst">
 
-    <div class="content">
-        <h1 style="text-align: center">Lịch sử giao dịch</h1>
-            <table border="1" style="word-wrap:break-word">
-                <tr>
-                    <th style="height: 50px;" rowspan="2">Ngày tháng</th>
-                    <th style="height: 50px;" rowspan="2">Tên giao dịch</th>
-                    <th style="height: 50px;" rowspan="2">Người Gửi</th>
-                    <th style="height: 50px;" rowspan="2">Người Nhận</th>
-                    <th style="height: 50px;" rowspan="2">Số tiền</th>
-                    <th style="height: 50px;" rowspan="2">Trạng thái</th>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                    <td style="height: 30px; text-align: center">03/08/1993</td>
-                    <td style="height: 30px; text-align: center">Chuyền tiền</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">####</td>
-                    <td style="height: 30px; text-align: center">Thất bại</td>
+                <li>
+                    <p>Điện thoại
+                    <p>0123456789</p>
+                    </p>
 
-                </tr>
-            </table>
+                </li>
+                <li>
+                    <p>Email
+                    <p>nguyenphucluan19022000@gmail.com</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Họ và tên
+                    <p>Nguyễn Phúc Luân</p>
+                    </p>
+                </li>
+            </ul>
+            <ul class="analyst">
+                <li>
+                    <p>Ngày sinh
+                    <p>19/02/2000</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Địa chỉ
+                    <p>Tien Giang</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Ngày kích hoạt
+                    <p>01/01/2022</p>
+                    </p>
+                </li>
+            </ul>
+            <ul class="analyst">
+
+                <li>
+                    <p>Tên đăng nhập
+                    <p>0123456789</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Mật khẩu
+                    <p>**********************</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Trạng thái
+                    <p>Đang hoạt động</p>
+                    </p>
+                </li>
+            </ul>
+            <form action="/index/profile" method="POST">
+                <div class="actions">
+                    <div class="update">
+                        <a  href="#" onclick="">Cập nhật</a>
+                    </div>
+                </div>
+                <div class="videos">
+                    <div class="video">
+                        <img src="/images/cmnd.png" alt="" id="photo1" name="photo1">
+                    </div>
+                    <div class="video">
+                        <img src="/images/cmnd2.jpg" alt="" id="photo2" name="photo2">
+                    </div>
+                </div>
+                <input required style="display: inline-block; padding-left: 100px" name="photo1" type="file"
+                    accept="image/*"
+                    onchange="document.getElementById('photo1').src = window.URL.createObjectURL(this.files[0])">
+                <input required style="display: inline-block; position:absolute; right: 300px" name="photo2" type="file"
+                    accept="image/*"
+                    onchange="document.getElementById('photo2').src = window.URL.createObjectURL(this.files[0])">
+            </form>
+        </div>
     </div>
-    
 </body>
