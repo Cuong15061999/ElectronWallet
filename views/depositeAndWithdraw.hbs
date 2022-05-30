@@ -781,9 +781,20 @@
             </div>
         </header>
     </div>
+
     <div class="content">
         <div class="container">
             <div class="title">Nạp tiền & Rút tiền</div>
+            {{#if msg}}
+            <div
+                style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">
+                {{msg}}</div>
+            {{/if}}
+            {{#if msg1}}
+            <div
+                style="color:rgb(6, 13, 6); background-color:rgb(46, 160, 20); padding: 10px 10px 10px 10px; margin-top: 10px">
+                {{msg1}}</div>
+            {{/if}}
             <div class="main-content2">
                 <form name="myFrom" action="/index/depositeAndWithdraw" method="POST">
                     <div class="buyCard-details">
@@ -797,20 +808,20 @@
                         </div>
                         <div class="input-box">
                             <span class="cardID">Nhập số thẻ</span>
-                            <input id="cardID" type="text" placeholder="Nhập số thẻ" required>
+                            <input name="cardID" id="cardID" type="text" placeholder="Nhập số thẻ" required>
                         </div>
                         <div class="input-box">
                             <span class="CVV">CVV</span>
-                            <input id="CVV" type="text" placeholder="Nhập số CVV" required>
+                            <input name="CVV" id="CVV" type="text" placeholder="Nhập số CVV" required>
                         </div>
                         <div class="input-box">
                             <span class="AmountMoney">Số tiền nạp & rút</span>
-                            <input id="money" type="text" placeholder="Nhập số tiền" required>
+                            <input name="money" id="money" type="number" placeholder="Nhập số tiền" required>
                         </div>
                     </div>
 
                     <div class="button">
-                        <input type="submit" value="Xác nhận">
+                        <input type="submit" name="confirm" value="Xác nhận">
                     </div>
                     <div class="button">
                         <input type="submit" value="Hủy">
