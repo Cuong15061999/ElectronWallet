@@ -4,16 +4,27 @@ var router = express.Router();
 var User = require('../models/user');
 
 /* GET users listing. */
-//DASHBOARD
+//DASHBOARD ** Chua do thong tin vao` bang Lich su Giao Dich
 router.get('/', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
+  //insert info in to the page
+  User.findOne({ username: req.session.user }, function(err, users){
+    if(err) {
+      //xu ly error o day
+      throw err;
+    }else{
+      var tempMoney = users.Money
+      moneyFormated = tempMoney.toLocaleString()
+      //console.log(moneyFormated)
+      return res.render('index', {users, moneyFormated})
+    }
+  });
 
-
-  return res.render('index')
+  //insert info to the table
 });
 
 //THONG TIN CHI TIET

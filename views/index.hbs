@@ -165,18 +165,19 @@
     }
 
     .cards img {
-        width: 120px;
-        height: 120px;
+        width: 280px;
+        height: 150px;
     }
 
     .cards .card-single h3 {
         padding-top: 30px;
-        padding-right: 50px;
+        font-size: 30px;
     }
 
     .cards .card-single h4 {
         padding-top: 60px;
         padding-left: 60px;
+        font-size: 30px;
     }
 
     .cards .card-single h3 span {
@@ -251,7 +252,7 @@
             box-shadow: 2px 2px 5px rgb(44, 26, 26);
         }
 
-        
+
     }
 
 
@@ -775,67 +776,67 @@
             </div>
 
             <div class="user-wrapper">
-                <img src="/images/1.jpg" width="40px" height="40px" alt="">
+                <img src="/images/IconUser.png" width="40px" height="40px" alt="">
                 <div>
-                    <h4>Name</h4>
-                    <small>Money</small>
+                    <h4>{{users.fullname}}</h4>
+                    <small>{{users.actStatus}}</small>
                 </div>
             </div>
         </header>
 
         <main>
             <div class="cards">
-                <a href=""><img src="/images/1.jpg" alt=""></a>
+                <a href=""><img src="/images/IconUser.png" alt=""></a>
 
                 <div class="card-single">
                     <div>
-                        <h3>Money: <span>1000000000đ</span></h3>
-                        <h3>Status: <span>Đang hoạt động</span></h3>
+                        <h3>Money: <span>{{moneyFormated}}đ</span></h3>
+                        <h3>Status: <span>{{users.actStatus}}</span></h3>
                     </div>
                 </div>
 
-                <div class="card-single">
-                    <div>
-                        <!-- <a href="">
+                <div class=" card-single">
+                                <div>
+                                    <!-- <a href="">
                             <h4>Thông tin chi tiết</h4>
                         </a> -->
+                                </div>
                     </div>
-                </div>
 
-                <div class="card-single">
-                    <div>
-                        <a href="/index/profile">
-                            <h4>Thông tin chi tiết</h4>
-                        </a>
+                    <div class="card-single">
+                        <div>
+                            <a href="/index/profile">
+                                <h4>Thông tin chi tiết</h4>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
         </main>
     </div>
 
     <div class="content">
         <h1 style="text-align: center">Lịch sử giao dịch</h1>
-            <table border="1" style="word-wrap:break-word">
-                <tr>
-                    <th style="height: 50px;" rowspan="2">Ngày tháng</th>
-                    <th style="height: 50px;" rowspan="2">Tên giao dịch</th>
-                    <th style="height: 50px;" rowspan="2">Người Gửi</th>
-                    <th style="height: 50px;" rowspan="2">Người Nhận</th>
-                    <th style="height: 50px;" rowspan="2">Số tiền</th>
-                    <th style="height: 50px;" rowspan="2">Trạng thái</th>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                    <td style="height: 30px; text-align: center">03/08/1993</td>
-                    <td style="height: 30px; text-align: center">Chuyền tiền</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                    <td style="height: 30px; text-align: center">####</td>
-                    <td style="height: 30px; text-align: center">Thất bại</td>
+        <table border="1" style="word-wrap:break-word">
+            <tr>
+                <th style="height: 50px;" rowspan="2">Ngày tháng</th>
+                <th style="height: 50px;" rowspan="2">Tên giao dịch</th>
+                <th style="height: 50px;" rowspan="2">Người Gửi</th>
+                <th style="height: 50px;" rowspan="2">Người Nhận</th>
+                <th style="height: 50px;" rowspan="2">Số tiền</th>
+                <th style="height: 50px;" rowspan="2">Trạng thái</th>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <td style="height: 30px; text-align: center">03/08/1993</td>
+                <td style="height: 30px; text-align: center">Chuyền tiền</td>
+                <td style="height: 30px; text-align: center">Trần Đức Anh</td>
+                <td style="height: 30px; text-align: center">Trần Đức Anh</td>
+                <td style="height: 30px; text-align: center">####</td>
+                <td style="height: 30px; text-align: center">Thất bại</td>
 
-                </tr>
-            </table>
+            </tr>
+        </table>
     </div>
-    
+
 </body>
