@@ -1,0 +1,150 @@
+<style>
+    body,
+    .signin,
+    .signup {
+        background-color: mediumspringgreen;
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(19, 18, 18);
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .avatar {
+        width: 200px;
+        height: 200px;
+        margin-left: 24%;
+        margin-top: 5px;
+        padding-bottom: 20px;
+        display: block;
+    }
+
+    .page {
+        position: absolute;
+        height: max-content;
+        width: 405px;
+        right: 0;
+        top: 10%;
+        margin-right: 50px;
+        padding: 30px 70px;
+        background-color: #000000;
+        color: white;
+        /*background-size: cover;*/
+    }
+
+    .header-container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .active {
+        border-bottom: 2px solid #1161ed;
+    }
+
+    h2 {
+        padding-left: 12px;
+        font-size: 22px;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+        letter-spacing: 2px;
+        display: inline-block;
+        font-weight: 100;
+    }
+
+    h2:first-child {
+        padding-left: 0px;
+    }
+
+    span {
+        text-transform: uppercase;
+        font-size: 12px;
+        position: relative;
+        top: -65px;
+    }
+
+    .text {
+        border: none;
+        width: 89%;
+        padding: 10px 20px;
+        display: block;
+        height: 15px;
+        border-radius: 20px;
+        background: rgba(1, 0, 0, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0);
+        margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="date"] {
+        font-family: 'Montserrat', sans-serif;
+        color: #000;
+        background-color: #FFFFFF;
+    }
+
+    label {
+        display: inline-block;
+        padding-top: 10px;
+        padding-left: 5px;
+    }
+
+    .signin,
+    .signup,
+    .repass {
+        background-color: #1161ed;
+        color: #FFF;
+        width: 100%;
+        padding: 10px 20px;
+        height: 39px;
+        border-radius: 20px;
+        margin-top: 20px;
+        border: none;
+    }
+
+    #fg {
+        text-align: center;
+        display: block;
+        top: 30px;
+        position: relative;
+        text-decoration: none;
+        color: rgba(10, 19, 120, 0.2);
+    }
+
+    .img-login {
+        position: absolute;
+        top: 15%;
+        left: 10%;
+    }
+</style>
+
+<body>
+    <div class="img-login">
+        <img src="/images/digital-wallet.png">
+    </div>
+    <div class="page">
+        <div class="header-container">
+            <h2 class="active">Enter OTP TO Confirm Your Transfer</h2>
+        </div>
+        {{#if msg}}
+        <div
+            style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">
+            {{msg}}</div>
+        {{/if}}
+        {{#if msg1}}
+        <div
+            style="color:rgb(18, 24, 18); background-color:rgb(79, 194, 17); padding: 10px 10px 10px 10px; margin-top: 10px">
+            {{msg1}}</div>
+        {{/if}}
+        <form action="OtpSendMoney" method="POST">
+            <img src="/images/key.png" class="avatar">
+            <input type="hidden" class="text" id="email" name="email" value={{email}}>
+            <input type="hidden" class="text" id="money" name="money" value={{money}}>
+            <input type="hidden" class="text" id="note" name="note" value={{note}}>
+            <input required type="text" class="text" id="otp" name="otp">
+            <span>OTP</span>
+            <button class="repass">
+                SEND
+            </button>
+        </form>
+    </div>
+</body>
