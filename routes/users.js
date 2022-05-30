@@ -124,6 +124,9 @@ router.get('/', function (req, res, next) {
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
+  transferHistory.find({idSender: req.session.user}, function(err, transferHs){
+    console.log(transferHs)
+  })
   User.findOne({ username: req.session.user }, function (err, users) {
     if (err) {
       throw err;
@@ -466,8 +469,8 @@ router.post('/OtpSendMoney', function (req, res, next) {
                     //send mail tien cho ng nhan
                     sendReceiverEmail(receiver.email, req.body.money, recMoney, req.body.note, users.fullname, res)
                     new transferHistory({
-                      idSender: users.email,
-                      idReceiver: receiver.email,
+                      idSender: users.username,
+                      idReceiver: receiver.username,
                       money: req.body.money,
                       createdAt: Date.now(),
                       Status:"Thanh Cong",
