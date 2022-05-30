@@ -4,6 +4,9 @@ var router = express.Router();
 var User = require('../models/user');
 var AtmHistory = require('../models/AtmHistory')
 var AtmCard = require('../models/AtmCard')
+var PhoneCard = require('../models/PhoneCard')
+var PhoneCHistory = require('../models/PhoneCHistory');
+const phoneCHistory = require('../models/PhoneCHistory');
 
 /* GET users listing. */
 //DASHBOARD ** Chua do thong tin vao` bang Lich su Giao Dich
@@ -41,7 +44,7 @@ router.get('/profile', function (req, res, next) {
   return res.render('profile')
 });
 
-//Nap & Rut TIEN** Phan get chua gui duoc mess error can nguoi dung` vao` trang
+//Nap & Rut TIEN* Phan get chua gui duoc mess error stop nguoi dung` vao` trang (almost Done)
 router.get('/depositeAndWithdraw', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
@@ -69,7 +72,7 @@ router.get('/depositeAndWithdraw', function (req, res, next) {
 
 });
 
-//Moi Ngay chi dc rut 2 lan*** 
+//Moi Ngay chi dc rut 2 lan* (almost Done)
 router.post('/depositeAndWithdraw', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
@@ -83,15 +86,15 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
     } else {
       if (AtmCards.CVV === req.body.CVV) {
         //Rut tien Boi so cua 50k
-        if(req.body.depositAndwithdraw === "Out" && (parseInt(req.body.money)%50000) != 0){
+        if (req.body.depositAndwithdraw === "Out" && (parseInt(req.body.money) % 50000) != 0) {
           return res.render('depositeAndWithdraw', { msg: 'So Tien Ban Rut Phai Chia Het Cho 50k' })
         }
         //the 222222 chi nap rut 1tr/lan
-        if(req.body.cardID === "222222" && parseInt(req.body.money) > 1000000){
+        if (req.body.cardID === "222222" && parseInt(req.body.money) > 1000000) {
           return res.render('depositeAndWithdraw', { msg: 'The Nay` Chi Dc 1tr 1 lan` giao dich' })
         }
         //the 333333 het tien
-        if(req.body.depositAndwithdraw === "In" && req.body.cardID === "333333"){
+        if (req.body.depositAndwithdraw === "In" && req.body.cardID === "333333") {
           return res.render('depositeAndWithdraw', { msg: 'The Het Tien' })
         }
         if (req.body.depositAndwithdraw === "In") {//Deposit Money
@@ -154,7 +157,7 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
                         console.log(err)
                       }
                       else {
-                        return res.render('depositeAndWithdraw', { msg1: 'WithDraw SuccessFully and your fee: '+fee })
+                        return res.render('depositeAndWithdraw', { msg1: 'WithDraw SuccessFully and your fee: ' + fee })
                       }
                     });
                 })
@@ -170,25 +173,78 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
 
 });
 
-//Mua the dt
+//Mua the dt. Phan get chua gui duoc mess error stop nguoi dung` vao` trang (almost Done)
 router.get('/buyCard', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
-
+  //take user info mation
+  User.findOne({ username: req.session.user }, function (err, users) {
+    if (err) {
+      throw err;
+    } else {
+      if (users.actStatus === "Xac Minh") {
+        return res.render('buyCard')
+      } else {
+        //chua hien ra flash message
+        req.session.flash = {
+          info: "Error",
+          message: "Chua duoc phep dung` tinh nang nay`"
+        }
+        // tim` cach gui flash message ve trang index
+        return res.redirect('/index')
+      }
+    }
+  });
   return res.render('buyCard')
 });
-
+//done
 router.post('/buyCard', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
+  //caculate totalMoney thay user have to pay
+  let totalMoney = parseInt(req.body.typeOfMoney) * parseInt(req.body.amount)
+  User.findOne({ username: req.session.user }, function (err, users) {
+    //Neu Khong Du Tien` thì se~ ko mua dc
+    if (users.Money < totalMoney) {
+      return res.render('buyCard', { msg: "Ban Khong Du Tien De Mua" })
+    } else {//Neu du tien. Tao ra cardSeri
+      PhoneCard.findOne({ cardName: req.body.Company }, function (err, phoneCards) {
+        const random = Math.floor(10000 + Math.random() * 90000);
+        let cardSeri = phoneCards.cardNumber + random.toString();
+        new phoneCHistory({
+          idUser: req.session.user,
+          idPhoneCard: req.body.Company,
+          totalMoney: totalMoney,
 
-  console.log('Buy Card')
+          cardSeri: cardSeri,
+          fee: 0,
+          createdAt: Date.now(),
+        }).save()
+          .then(() => {
+            //update user money
+            let money = parseInt(users.Money) - parseInt(totalMoney)
+            User.updateOne({ username: req.session.user },
+              { Money: money },
+              function (err, docs) {
+                if (err) {
+                  console.log(err)
+                }
+                else {
+                  return res.render('buyCard', { msg1: 'Success CardSeri: ' + cardSeri + ' Total Money: ' + totalMoney + ' fee: 0' })
+                }
+              });
+
+          });
+
+      })
+    }
+  })
 });
 
 //Chuyen tien`
@@ -210,7 +266,7 @@ router.post('/transfer', function (req, res, next) {
   console.log('transfer post ')
 });
 
-//login
+//login (done)
 router.get('/logout', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)

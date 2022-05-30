@@ -709,6 +709,7 @@
 
     @media screen and (min-width: 1200px) {}
 </style>
+
 <body>
     <div class="sidebar">
         <div class="sidebar-brand">
@@ -784,31 +785,39 @@
     <div class="content">
         <div class="container">
             <div class="title">Mua thẻ điện thoại</div>
+            {{#if msg}}
+            <div
+                style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">
+                {{msg}}</div>
+            {{/if}}
+            {{#if msg1}}
+            <div
+                style="color:rgb(18, 24, 18); background-color:rgb(79, 194, 17); padding: 10px 10px 10px 10px; margin-top: 10px">
+                {{msg1}}</div>
+            {{/if}}
             <div class="main-content2">
                 <form action="/index/buyCard" method="POST">
                     <div class="buyCard-details">
                         <div class="input-box">
                             <span class="">Chọn mạng di động:</span>
-                            <select name="Company" id="cars">
+                            <select type="text" name="Company" id="cars">
                                 <option value="Viettel">Viettel</option>
-                                <option value="Mobiphone">Mobiphone</option>
-                                <option value="Vinaphone">Vinaphone</option>
+                                <option value="Mobi">Mobi</option>
+                                <option value="Vina">Vina</option>
                             </select>
                         </div>
                         <div class="input-box">
                             <span class="">Chọn giá tiền</span>
-                            <select name="typeOfMoney" id="typeOfMoney">
-                                <option value="k10">10.000đ</option>
-                                <option value="k20">20.000đ</option>
-                                <option value="k50">50.000đ</option>
-                                <option value="k100">100.000đ</option>
-                                <option value="k200">200.000đ</option>
-                                <option value="k500">500.000đ</option>
+                            <select type="number" name="typeOfMoney" id="typeOfMoney">
+                                <option value="10000">10.000đ</option>
+                                <option value="20000">20.000đ</option>
+                                <option value="50000">50.000đ</option>
+                                <option value="100000">100.000đ</option>
                             </select>
                         </div>
                         <div class="input-box">
                             <span class="amount">Nhập số lượng</span>
-                            <input type="text" placeholder="Nhập số lượng" required>
+                            <input name="amount" type="number" placeholder="Nhập số lượng" required>
                         </div>
                     </div>
 
@@ -819,11 +828,6 @@
                     <div class="button">
                         <input type="submit" value="Hủy">
                     </div>
-
-                    <h2 class="">Mua thẻ thành công / thất bại</h2>
-                    <span class="">Mã thẻ: </span>
-                    <br>
-                    <span class="">Số seri: </span>
                 </form>
             </div>
         </div>
