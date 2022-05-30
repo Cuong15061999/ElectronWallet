@@ -124,20 +124,16 @@ router.get('/', function (req, res, next) {
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
-  //insert info in to the page
   User.findOne({ username: req.session.user }, function (err, users) {
     if (err) {
-      //xu ly error o day
       throw err;
     } else {
       var tempMoney = users.Money
       moneyFormated = tempMoney.toLocaleString()
-      //console.log(moneyFormated)
+      //
       return res.render('index', { users, moneyFormated })
     }
   });
-
-  //insert info to the table
 });
 
 //THONG TIN CHI TIET** Duy lam`
@@ -408,7 +404,7 @@ router.get('/OtpSendMoney', function (req, res, next) {
   console.log('email user is: ' + req.session.user)
   return res.render('OtpSendMoney')
 });
-//done
+//(done)
 router.post('/OtpSendMoney', function (req, res, next) {
   //Check User are Login or Not
   console.log(' username is: ' + req.session.user)
@@ -474,6 +470,7 @@ router.post('/OtpSendMoney', function (req, res, next) {
                       idReceiver: receiver.email,
                       money: req.body.money,
                       createdAt: Date.now(),
+                      Status:"Thanh Cong",
                     }).save()
                       .then(() => {
                         return res.render('transfers', { msg1: 'SEND MONEY SUCCESSFULLY' })
@@ -490,11 +487,11 @@ router.post('/OtpSendMoney', function (req, res, next) {
   })
 });
 
-//login (done)
+//logout (done)
 router.get('/logout', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
-
+  req.session.user = ""
   return res.render('login')
 });
 module.exports = router;
