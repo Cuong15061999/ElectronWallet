@@ -59,7 +59,7 @@ router.get('/depositeAndWithdraw', function (req, res, next) {
         //chua hien ra flash message
         req.session.flash = {
           info: "Error",
-          message: "Sai email hoac mat khau"
+          message: "Chua duoc phep dung` tinh nang nay`"
         }
         // tim` cach gui flash message ve trang index
         return res.redirect('/index')
@@ -69,7 +69,7 @@ router.get('/depositeAndWithdraw', function (req, res, next) {
 
 });
 
-//Moi Ngay chi dc rut 2 lan***
+//Moi Ngay chi dc rut 2 lan*** 
 router.post('/depositeAndWithdraw', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
