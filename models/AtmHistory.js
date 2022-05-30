@@ -4,6 +4,7 @@ var atmHistorySchema =new mongoose.Schema({
     idCard: String,
     money: Number,
     Status: Number,// 0 la` nap , 1 la` rut
+    StatusSuccess: String,// thanh cong, cho phe duyet
     createdAt: Date,//ngay` tao.
 })
 var atmHistory = mongoose.model('AtmHistory', atmHistorySchema)
