@@ -777,8 +777,8 @@
             <div class="user-wrapper">
                 <img src="/images/1.jpg" width="40px" height="40px" alt="">
                 <div>
-                    <h4>Name</h4>
-                    <small>Money</small>
+                    <h4>{{{user.fullname}}}</h4>
+                    <small>{{{money}}} đ</small>
                 </div>
             </div>
         </header>
@@ -818,7 +818,7 @@
             <ul class="analyst">
                 <li>
                     <p>Ngày sinh
-                    <p>{{{user.birthDay}}}</p>
+                    <p>{{{dob}}}</p>
                     </p>
 
                 </li>
@@ -830,7 +830,7 @@
                 </li>
                 <li>
                     <p>Ngày kích hoạt
-                    <p>{{{user.CreateAt}}}</p>
+                    <p>{{{CreateAt}}}</p>
                     </p>
                 </li>
             </ul>
@@ -850,7 +850,7 @@
                 </li>
                 <li>
                     <p>Trạng thái
-                    <p>Đang hoạt động</p>
+                    <p>{{{user.actStatus}}}</p>
                     </p>
                 </li>
             </ul>
@@ -862,10 +862,10 @@
                 </div>
                 <div class="videos">
                     <div class="video">
-                        <img src="/images/cmnd.png" alt="" id="photo1" name="photo1">
+                        <img src="/images/{{{img1}}}" alt="" id="photo1" name="photo1">
                     </div>
                     <div class="video">
-                        <img src="/images/cmnd2.jpg" alt="" id="photo2" name="photo2">
+                        <img src="/images/{{{img2}}}" alt="" id="photo2" name="photo2">
                     </div>
                 </div>
                 <input required style="display: inline-block; padding-left: 100px" name="photo1" type="file"

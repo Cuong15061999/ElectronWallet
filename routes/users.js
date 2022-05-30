@@ -39,7 +39,7 @@ router.get('/profile',  function (req, res, next) {
     if(err){
       throw err
     }else{
-      return res.render('profile',{user:users})
+      return res.render('profile',{user:users,dob: convert(users.birthDay),CreateAt: convert(users.CreateAt),money: users.Money.toLocaleString(),img1:users.Photos[0],img2:users.Photos[1]})
     }
   });
 });
@@ -113,3 +113,10 @@ router.get('/logout', function (req, res, next) {
   return res.render('login')
 });
 module.exports = router;
+
+function convert(str) {
+  var date = new Date(str),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
+}
