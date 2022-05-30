@@ -709,6 +709,7 @@
 
     @media screen and (min-width: 1200px) {}
 </style>
+
 <body>
     <div class="sidebar">
         <div class="sidebar-brand">
@@ -782,6 +783,16 @@
     </div>
     <div class="content">
         <div class="container">
+            {{#if msg}}
+            <div
+                style="color:rgb(139, 23, 23); background-color:rgb(231, 141, 141); padding: 10px 10px 10px 10px; margin-top: 10px">
+                {{msg}}</div>
+            {{/if}}
+            {{#if msg1}}
+            <div
+                style="color:rgb(18, 24, 18); background-color:rgb(79, 194, 17); padding: 10px 10px 10px 10px; margin-top: 10px">
+                {{msg1}}</div>
+            {{/if}}
             <div class="title">Chuyển tiền</div>
             <div class="main-content2">
                 <form action="/index/transfer" method="POST">
@@ -789,20 +800,20 @@
                         <div class="input-box">
                             <div class="input-boxx">
                                 <span class="PhoneNumber">Số điện thoại người nhận</span>
-                                <input type="text" placeholder="Nhập số điện thoại người nhận" required>
+                                <input name="UserSend" type="text" placeholder="Nhập số điện thoại người nhận" required>
                             </div>
                         </div>
                         <div class="input-box">
                             <div class="input-boxx">
                                 <span class="username">Tên người nhận</span>
-                                <input type="text" placeholder="Nhập tên người nhận" required>
+                                <input name="UserTake" type="text" placeholder="Nhập tên người nhận" required>
                             </div>
 
                         </div>
                         <div class="input-box">
                             <div class="input-boxx">
                                 <span class="amount">Số tiền</span>
-                                <input type="text" placeholder="Nhập số tiền" required>
+                                <input name="money" type="text" placeholder="Nhập số tiền" required>
                             </div>
                         </div>
                         <div class="input-box">
@@ -810,7 +821,7 @@
                                 <span class="note">Note</span>
                                 <br>
                                 <!-- <input type="text" placeholder="Nhập số tiền" required> -->
-                                <textarea name="" id="" cols="30" rows="50" placeholder="Note here"></textarea>
+                                <textarea name="note" id="" cols="30" rows="50" placeholder="Note here"></textarea>
                             </div>
                         </div>
 
@@ -823,7 +834,6 @@
                     <div class="button">
                         <input type="submit" value="Hủy">
                     </div>
-                    <h2 class="">Chuyền tiền thành công/thất bại</h2>
                 </form>
             </div>
         </div>

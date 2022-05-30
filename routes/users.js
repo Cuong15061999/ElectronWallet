@@ -198,7 +198,6 @@ router.get('/buyCard', function (req, res, next) {
       }
     }
   });
-  return res.render('buyCard')
 });
 //done
 router.post('/buyCard', function (req, res, next) {
@@ -254,7 +253,23 @@ router.get('/transfer', function (req, res, next) {
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
-  return res.render('transfers')
+  User.findOne({ username: req.session.user }, function (err, users) {
+    if (err) {
+      throw err;
+    } else {
+      if (users.actStatus === "Xac Minh") {
+        return res.render('transfers')
+      } else {
+        //chua hien ra flash message
+        req.session.flash = {
+          info: "Error",
+          message: "Chua duoc phep dung` tinh nang nay`"
+        }
+        // tim` cach gui flash message ve trang index
+        return res.redirect('/index')
+      }
+    }
+  });
 });
 
 router.post('/transfer', function (req, res, next) {
@@ -263,7 +278,8 @@ router.post('/transfer', function (req, res, next) {
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
-  console.log('transfer post ')
+
+  console.log(req.body)
 });
 
 //login (done)
