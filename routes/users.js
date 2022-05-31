@@ -152,7 +152,7 @@ router.get('/profile',  function (req, res, next) {
     if(err){
       throw err
     }else{
-      return res.render('profile',{user:users,dob: convert(users.birthDay),CreateAt: convert(users.CreateAt),money: users.Money.toLocaleString(),img1:users.Photos[0],img2:users.Photos[1]})
+      return res.render('profile',{title: "Profile",user:users,dob: convert(users.birthDay),CreateAt: convert(users.CreateAt),money: users.Money.toLocaleString(),img1:users.Photos[0],img2:users.Photos[1]})
     }
   });
 });
@@ -170,7 +170,7 @@ router.get('/depositeAndWithdraw', function (req, res, next) {
       throw err;
     } else {
       if (users.actStatus === "Xac Minh") {
-        return res.render('depositeAndWithdraw')
+        return res.render('depositeAndWithdraw',{title: "Deposit & Withdraw", user: users, money: users.Money.toLocaleString()})
       } else {
         //chua hien ra flash message
         req.session.flash = {
@@ -230,7 +230,7 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
                       console.log(err)
                     }
                     else {
-                      return res.render('depositeAndWithdraw', { msg1: 'Deposit SuccessFully' })
+                      return res.render('depositeAndWithdraw', { msg1: 'Deposit SuccessFully' ,user: users, money: money.toLocaleString()})
                     }
                   });
               })
@@ -248,7 +248,7 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
               createdAt: Date.now(),
             }).save()
               .then(() => {
-                return res.render('depositeAndWithdraw', { msg1: 'WithDraw Waiting' })
+                return res.render('depositeAndWithdraw', { msg1: 'WithDraw Waiting'})
               });
           } else {// tien` be hon 5tr
             new AtmHistory({
@@ -270,7 +270,7 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
                         console.log(err)
                       }
                       else {
-                        return res.render('depositeAndWithdraw', { msg1: 'WithDraw SuccessFully and your fee: ' + fee })
+                        return res.render('depositeAndWithdraw', { msg1: 'WithDraw SuccessFully and your fee: ' + fee ,user: users, money: money.toLocaleString()  })
                       }
                     });
                 })
@@ -299,7 +299,7 @@ router.get('/buyCard', function (req, res, next) {
       throw err;
     } else {
       if (users.actStatus === "Xac Minh") {
-        return res.render('buyCard')
+        return res.render('buyCard',{title: "Buy Phone Card", user: users, money: users.Money.toLocaleString()})
       } else {
         //chua hien ra flash message
         req.session.flash = {
@@ -348,7 +348,7 @@ router.post('/buyCard', function (req, res, next) {
                   console.log(err)
                 }
                 else {
-                  return res.render('buyCard', { msg1: 'Success CardSeri: ' + cardSeri + ' Total Money: ' + totalMoney + ' fee: 0' })
+                  return res.render('buyCard', { msg1: 'Success CardSeri: ' + cardSeri + ' Total Money: ' + totalMoney + ' fee: 0',user: users, money: money.toLocaleString() })
                 }
               });
 
@@ -371,7 +371,7 @@ router.get('/transfer', function (req, res, next) {
       throw err;
     } else {
       if (users.actStatus === "Xac Minh") {
-        return res.render('transfers')
+        return res.render('transfers',{title: "Transaction Money", user: users, money: users.Money.toLocaleString()})
       } else {
         //chua hien ra flash message
         req.session.flash = {
@@ -483,7 +483,7 @@ router.post('/OtpSendMoney', function (req, res, next) {
                       Status:"Thanh Cong",
                     }).save()
                       .then(() => {
-                        return res.render('transfers', { msg1: 'SEND MONEY SUCCESSFULLY' })
+                        return res.render('transfers', { msg1: 'SEND MONEY SUCCESSFULLY',user: users })
                       });
                   }
                 });
