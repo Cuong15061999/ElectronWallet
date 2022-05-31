@@ -500,9 +500,8 @@ router.post('/OtpSendMoney', function (req, res, next) {
 //logout (done)
 router.get('/logout', function (req, res, next) {
   //Check User are Login or Not
-  console.log('email user is: ' + req.session.user)
-  req.session.user = ""
-  return res.render('login')
+  req.session.destroy();
+  res.render('login');
 });
 module.exports = router;
 
