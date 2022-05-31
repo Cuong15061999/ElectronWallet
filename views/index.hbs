@@ -819,11 +819,10 @@
     </div>
 
     <div class="content">
-        <h1 style="text-align: center">Lịch sử giao dịch</h1>
+        <h1 style="text-align: center">Lịch Sử Chuyển Tiền</h1>
         <table border="1" style="word-wrap:break-word">
             <tr>
                 <th style="height: 50px;" rowspan="2">Ngày tháng</th>
-                <th style="height: 50px;" rowspan="2">Tên giao dịch</th>
                 <th style="height: 50px;" rowspan="2">Người Gửi</th>
                 <th style="height: 50px;" rowspan="2">Người Nhận</th>
                 <th style="height: 50px;" rowspan="2">Số tiền</th>
@@ -831,15 +830,63 @@
             </tr>
             <tr>
             </tr>
-            <tr>
-                <td style="height: 30px; text-align: center">03/08/1993</td>
-                <td style="height: 30px; text-align: center">Chuyền tiền</td>
-                <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                <td style="height: 30px; text-align: center">Trần Đức Anh</td>
-                <td style="height: 30px; text-align: center">####</td>
-                <td style="height: 30px; text-align: center">Thất bại</td>
+            {{#each transferHs}}
+                <tr>
+                    <td style="height: 30px; text-align: center">{{createdAt}}</td>
+                    <td style="height: 30px; text-align: center">{{idSender}}</td>
+                    <td style="height: 30px; text-align: center">{{idReceiver}}</td>
+                    <td style="height: 30px; text-align: center">{{money}}đ</td>
+                    <td style="height: 30px; text-align: center">{{Status}}</td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
 
+    <div class="content">
+        <h1 style="text-align: center">Lịch Sử Mua Thẻ DT</h1>
+        <table border="1" style="word-wrap:break-word">
+            <tr>
+                <th style="height: 50px;" rowspan="2">Ngày tháng</th>
+                <th style="height: 50px;" rowspan="2">SĐT Người Mua</th>
+                <th style="height: 50px;" rowspan="2">Card Seri</th>
+                <th style="height: 50px;" rowspan="2">Thuế</th>
+                <th style="height: 50px;" rowspan="2">Tổng tiền</th>
             </tr>
+            <tr>
+            </tr>
+            {{#each phoneHs}}
+            <tr>
+                <td style="height: 30px; text-align: center">{{createdAt}}</td>
+                <td style="height: 30px; text-align: center">{{idUser}}</td>
+                <td style="height: 30px; text-align: center">{{cardSeri}}</td>
+                <td style="height: 30px; text-align: center">{{fee}}</td>
+                <td style="height: 30px; text-align: center">{{totalMoney}}đ</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+
+    <div class="content">
+        <h1 style="text-align: center">Lịch Sử Nạp Và Rút</h1>
+        <table border="1" style="word-wrap:break-word">
+            <tr>
+                <th style="height: 50px;" rowspan="2">Ngày tháng</th>
+                <th style="height: 50px;" rowspan="2">SĐT Người Thực Hiện</th>
+                <th style="height: 50px;" rowspan="2">Tổng tiền</th>
+                <th style="height: 50px;" rowspan="2">Phương Thức</th>
+                <th style="height: 50px;" rowspan="2">Trạng Thái</th>
+            </tr>
+            <tr>
+            </tr>
+            {{#each atmHs}}
+            <tr>
+                <td style="height: 30px; text-align: center">{{createdAt}}</td>
+                <td style="height: 30px; text-align: center">{{idUser}}</td>
+                <td style="height: 30px; text-align: center">{{money}}đ</td>
+                <td style="height: 30px; text-align: center">{{Status}}</td>
+                <td style="height: 30px; text-align: center">{{StatusSuccess}}</td>
+            </tr>
+            {{/each}}
         </table>
     </div>
 

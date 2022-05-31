@@ -3,7 +3,7 @@ var atmHistorySchema =new mongoose.Schema({
     idUser: String,
     idCard: String,
     money: Number,
-    Status: Number,// 0 la` nap , 1 la` rut
+    Status: String,// "nap" , "rut"
     StatusSuccess: String,// thanh cong, cho phe duyet
     createdAt: Date,//ngay` tao.
 })

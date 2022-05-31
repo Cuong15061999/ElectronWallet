@@ -117,24 +117,27 @@ const sendReceiverEmail = async (email, moneyReceive, moneyNow, note, sender, re
   }
 };
 /* GET users listing. */
-//DASHBOARD ** Chua do thong tin vao` bang Lich su Giao Dich
+//DASHBOARD Chua co phan trang, (allmost done)
 router.get('/', function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
-  transferHistory.find({idSender: req.session.user}, function(err, transferHs){
-    console.log(transferHs)
-  })
+
   User.findOne({ username: req.session.user }, function (err, users) {
     if (err) {
       throw err;
     } else {
       var tempMoney = users.Money
       moneyFormated = tempMoney.toLocaleString()
-      //
-      return res.render('index', { users, moneyFormated })
+      transferHistory.find({idSender: req.session.user}, function(err, transferHs){
+        AtmHistory.find({idUser: req.session.user}, function(err, atmHs){
+          phoneCHistory.find({idUser: req.session.user}, function(err, phoneHs){
+            return res.render('index', { users, moneyFormated, phoneHs, atmHs, transferHs})
+          }).sort({createdAt: -1})
+        }).sort({createdAt: -1})
+      }).sort({createdAt: -1})
     }
   });
 });
@@ -209,7 +212,7 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
             idUser: req.session.user,
             idCard: req.body.cardID,
             money: req.body.money,
-            Status: 0,
+            Status: "Nạp Tiền",
             StatusSuccess: "thanh cong",
             createdAt: Date.now(),
           }).save()
@@ -237,7 +240,7 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
               idUser: req.session.user,
               idCard: req.body.cardID,
               money: finalmoney,
-              Status: 1,
+              Status: "Rút Tiền",
               StatusSuccess: "cho phe duyet",
               createdAt: Date.now(),
             }).save()
@@ -249,7 +252,7 @@ router.post('/depositeAndWithdraw', function (req, res, next) {
               idUser: req.session.user,
               idCard: req.body.cardID,
               money: finalmoney,
-              Status: 1,
+              Status: "Rút Tiền",
               StatusSuccess: "thanh cong",
               createdAt: Date.now(),
             }).save()
