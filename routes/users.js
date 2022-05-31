@@ -404,6 +404,7 @@ router.post('/transfer', function (req, res, next) {
     }
   })
 });
+
 //OTP Send Money (Done)
 router.get('/OtpSendMoney', function (req, res, next) {
   //Check User are Login or Not
@@ -501,3 +502,10 @@ router.get('/logout', function (req, res, next) {
   return res.render('login')
 });
 module.exports = router;
+
+function convert(str) {
+  var date = new Date(str),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
+}
