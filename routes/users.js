@@ -124,14 +124,13 @@ router.get('/', function (req, res, next) {
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
-
   User.findOne({ username: req.session.user }, function (err, users) {
     if (err) {
       throw err;
     } else {
       var tempMoney = users.Money
       moneyFormated = tempMoney.toLocaleString()
-      transferHistory.find({idSender: req.session.user}, function(err, transferHs){
+      transferHistory.find({$or: [{idSender: req.session.user} , {idReceiver: req.session.user}]}, function(err, transferHs){
         AtmHistory.find({idUser: req.session.user}, function(err, atmHs){
           phoneCHistory.find({idUser: req.session.user}, function(err, phoneHs){
             return res.render('index', { users, moneyFormated, phoneHs, atmHs, transferHs})
@@ -142,16 +141,20 @@ router.get('/', function (req, res, next) {
   });
 });
 
-//THONG TIN CHI TIET** Duy lam`
-router.get('/profile', function (req, res, next) {
+//THONG TIN CHI TIET
+router.get('/profile',  function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
   if (!req.session.user) {
     return res.render('login', { msg: "Pls Login Before Enter This Page" })
   }
-
-
-  return res.render('profile')
+  User.findOne({ username: req.session.user }, function(err, users){
+    if(err){
+      throw err
+    }else{
+      return res.render('profile',{user:users,dob: convert(users.birthDay),CreateAt: convert(users.CreateAt),money: users.Money.toLocaleString(),img1:users.Photos[0],img2:users.Photos[1]})
+    }
+  });
 });
 
 //Nap & Rut TIEN* Phan get chua gui duoc mess error stop nguoi dung` vao` trang (almost Done)
