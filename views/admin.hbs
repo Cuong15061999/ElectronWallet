@@ -448,7 +448,7 @@
     .content2 {
         width: 100%;
         display: grid;
-        padding-left: 270px;
+        padding-left: 260px;
         padding-top: 100px;
         font-size: 15px;
     }
@@ -459,18 +459,21 @@
         width: 100%;
         border-radius: 5px;
         border: none;
-        color: #fff;
+        color: rgb(14, 9, 9);
         font-size: 18px;
         font-weight: 500;
         letter-spacing: 1px;
         cursor: pointer;
         transition: all 0.3s ease;
         border: 1px solid rgb(12, 4, 4);
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
     }
 
-    .content2 .table2 button:hover {
-        background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    .content2 .table2 .deactive {
+        background-color: red;
+    }
+
+    .content2 .table2 .active {
+        background-color: rgb(10, 236, 78);
     }
 
 
@@ -953,7 +956,7 @@
             </div>
 
             <div class="user-wrapper1">
-                <img src="image/1.jpg" width="40px" height="40px" alt="">
+                <img src="/images/admin.png" width="40px" height="40px" alt="">
                 <div>
                     <h5>Admin</h5>
 
@@ -976,7 +979,7 @@
                 <td><a href="">User1</a></td>
                 <td>Đã kích hoạt</td>
                 <td>
-                    <button>
+                    <button class="deactive">
                         Hủy kích hoạt
                     </button>
                 </td>
@@ -986,7 +989,7 @@
                 <td><a href="">User2</a></td>
                 <td>Đã bị vô hiệu hóa</td>
                 <td>
-                    <button>
+                    <button class="active">
                         Kích hoạt
                     </button>
                 </td>

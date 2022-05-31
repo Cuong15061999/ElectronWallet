@@ -857,9 +857,10 @@
             <form action="/index/profile" method="POST">
                 <div class="actions">
                     <div class="update">
-                        <a  href="#" onclick="">Cập nhật</a>
+                        <button style="border: none;background: none;color: white; font-size: 15px">Cập nhật</button>
                     </div>
                 </div>
+                <input type="hidden" id="user_id" name="user_id" value="{{{user._id}}}">
                 <div class="videos">
                     <div class="video">
                         <img src="/images/{{{img1}}}" alt="" id="photo1" name="photo1">

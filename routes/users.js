@@ -141,7 +141,7 @@ router.get('/', function (req, res, next) {
   });
 });
 
-//THONG TIN CHI TIET
+//THONG TIN CHI TIET (done)
 router.get('/profile',  function (req, res, next) {
   //Check User are Login or Not
   console.log('email user is: ' + req.session.user)
@@ -153,6 +153,16 @@ router.get('/profile',  function (req, res, next) {
       throw err
     }else{
       return res.render('profile',{title: "Profile",user:users,dob: convert(users.birthDay),CreateAt: convert(users.CreateAt),money: users.Money.toLocaleString(),img1:users.Photos[0],img2:users.Photos[1]})
+    }
+  });
+});
+//done
+router.post('/profile',function (req,res) {
+  User.findByIdAndUpdate(req.body.user_id,{Photos:[req.body.photo1,req.body.photo2]},null,function (err,user) {
+    if(err){
+      throw err
+    }else{
+      res.redirect('/index/profile')
     }
   });
 });
@@ -184,6 +194,7 @@ router.get('/depositeAndWithdraw', function (req, res, next) {
   });
 
 });
+
 
 //Moi Ngay chi dc rut 2 lan* (almost Done)
 router.post('/depositeAndWithdraw', function (req, res, next) {
