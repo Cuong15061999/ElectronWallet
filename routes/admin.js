@@ -317,6 +317,12 @@ router.post('/updateStatus6', function (req, res) {
   });
 });
 
+//logout (done)
+router.get('/logout', function (req, res, next) {
+  //Check User are Login or Not
+  req.session.destroy();
+  res.render('login');
+});
 function convert(str) {
   var date = new Date(str),
     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
