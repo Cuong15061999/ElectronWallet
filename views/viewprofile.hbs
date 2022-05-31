@@ -596,14 +596,16 @@
     }
 
     .videos .video {
-        width: calc(100% /2);
-        height: 150px;
+        width: calc(75% /2);
+        height: 240px;
+        margin-left: 80px;
         border: 1px solid #fff;
         overflow: hidden;
     }
 
     .videos .video img {
-        max-width: 120%;
+        width: 98%;
+        height: 230px;
         transition: all 0.5s;
     }
 
@@ -891,8 +893,8 @@
 </style>
 
 <body>
-    <div class="sidebar2">
-        <div class="sidebar-brand2">
+    <div class="sidebar">
+        <div class="sidebar-brand">
             <h2><span></span>Moblie Bank</h2>
         </div>
         <div class="sidebar-menu2">
@@ -934,15 +936,15 @@
             </ul>
         </div>
     </div>
-    <div class="main-content3">
-        <headerrr>
+    <div class="main-content">
+        <header>
             <h2>
                 <label for="">
                     <span class="las la-bars"> </span>
                 </label> Trang chủ
             </h2>
 
-            <div class="search-wrapper1">
+            <div class="search-wrapper">
                 <a href="">
                     <span class="las la-search">
                         <input type="search" placeholder="Search Here">
@@ -951,50 +953,95 @@
 
             </div>
 
-            <div class="user-wrapper1">
+            <div class="user-wrapper">
                 <img src="/images/admin.png" width="40px" height="40px" alt="">
                 <div>
-                    <h5>Admin</h5>
-
+                    <h4>admin</h4>
                 </div>
             </div>
-        </headerrr>
-
+        </header>
     </div>
+    <div class="content">
+        <div id="wrapper">
+            <div class="info">
+                <div class="avatar">
+                    <img src="/images/IconUser.png" alt="">
+                </div>
+                <div class="name">
+                    <p>{{{user.fullname}}}
+                        <i class="fas fa-check-circle"></i>
+                    </p>
+                </div>
+            </div>
+            <ul class="analyst">
 
-    <div class="content2">
-        <table class="table2" border="1">
-            <tr>
-                <th rowspan="1">Ngày tháng</th>
-                <th rowspan="1">Tên tài khoản</th>
-                <th rowspan="1">Email</th>
-                <th rowspan="1">Trạng thái</th>
-                <th rowspan="1">Chức năng</th>
-            </tr>
-            {{#each waitUpdate}}
-            <tr>
-                <td>{{CreateAt}}</td>
-                <td><a href="/admin/user/{{_id}}">{{fullname}}</a></td>
-                <td>{{email}}</td>
-                <td>Chờ Cập Nhật</td>
-                <td>
-                    <form action="/admin/updateStatus4" method="POST">
-                        <input type="hidden" name="user_id" id="user_id" value="{{_id}}">
-                        <button>
-                            Xác Minh
-                        </button>
-                    </form>
-                    <form action="/admin/updateStatus5" method="POST">
-                        <input type="hidden" name="user_id" id="user_id" value="{{_id}}">
-                        <button>
-                            Vô Hiệu Hóa
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            {{/each}}
-        </table>
-    </div>
-    </div>
+                <li>
+                    <p>Điện thoại
+                    <p>{{{user.phone}}}</p>
+                    </p>
 
+                </li>
+                <li>
+                    <p>Email
+                    <p>{{{user.email}}}</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Họ và tên
+                    <p>{{{user.fullname}}}</p>
+                    </p>
+                </li>
+            </ul>
+            <ul class="analyst">
+                <li>
+                    <p>Ngày sinh
+                    <p>{{{dob}}}</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Địa chỉ
+                    <p>{{{user.address}}}</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Ngày kích hoạt
+                    <p>{{{CreateAt}}}</p>
+                    </p>
+                </li>
+            </ul>
+            <ul class="analyst">
+
+                <li>
+                    <p>Tên đăng nhập
+                    <p>{{{user.username}}}</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Mật khẩu
+                    <p>**********************</p>
+                    </p>
+
+                </li>
+                <li>
+                    <p>Trạng thái
+                    <p>{{{user.actStatus}}}</p>
+                    </p>
+                </li>
+            </ul>
+            <form action="/index/profile" method="POST">
+                <div class="videos">
+                    <div class="video">
+                        <img src="/images/{{{img1}}}" alt="" id="photo1" name="photo1">
+                    </div>
+                    <div class="video">
+                        <img src="/images/{{{img2}}}" alt="" id="photo2" name="photo2">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>

@@ -970,48 +970,19 @@
             <tr>
                 <th rowspan="1">Ngày tháng</th>
                 <th rowspan="1">Tên tài khoản</th>
+                <th rowspan="1">Email</th>
+                <th rowspan="1">Số Điện Thoại</th>
                 <th rowspan="1">Trạng thái</th>
-                <th rowspan="1">Chức năng</th>
             </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User1</a></td>
-                <td>Đã kích hoạt</td>
-                <td>
-                    <button class="deactive">
-                        Hủy kích hoạt
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User2</a></td>
-                <td>Đã bị vô hiệu hóa</td>
-                <td>
-                    <button class="active">
-                        Kích hoạt
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User3</a></td>
-                <td>Đã khóa vĩnh viễn</td>
-                <td>Đã khóa vĩnh viễn
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User4</a></td>
-                <td>Chờ kích hoạt</td>
-                <td>
-                    <button>
-                        Kích hoạt
-                    </button>
-                </td>
-            </tr>
-
-
+            {{#each userInAdminPage}}
+                <tr>
+                    <td>{{CreateAt}}</td>
+                    <td><a href="admin/user/{{_id}}">{{fullname}}</a></td>
+                    <td>{{email}}</td>
+                    <td>{{phone}}</td>
+                    <td>{{actStatus}}</td>
+                </tr>
+            {{/each}}
         </table>
     </div>
     </div>

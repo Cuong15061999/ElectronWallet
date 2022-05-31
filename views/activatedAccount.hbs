@@ -967,51 +967,32 @@
             <tr>
                 <th rowspan="1">Ngày tháng</th>
                 <th rowspan="1">Tên tài khoản</th>
+                <th rowspan="1">Email</th>
                 <th rowspan="1">Trạng thái</th>
                 <th rowspan="1">Chức năng</th>
             </tr>
+            {{#each user}} 
             <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User1</a></td>
-                <td>Đã kích hoạt</td>
+                <td> {{CreateAt}}</td>
+                <td><a href="/admin/user/{{_id}}"> {{fullname}}</a></td>
+                <td> {{email}}</td>
+                <td> {{actStatus}}</td>
                 <td>
-                    <button>
-                        Hủy kích hoạt
-                    </button>
+                    <form action="/admin/updateStatus7" method="POST">
+                        <input type="hidden" name="user_id" id="user_id" value="{{_id}}">
+                        <button>
+                            Cập Nhập
+                        </button>
+                    </form>
+                    <form action="/admin/updateStatus8" method="POST">
+                        <input type="hidden" name="user_id" id="user_id" value="{{_id}}">
+                        <button>
+                            Vô Hiệu Hóa
+                        </button>
+                    </form>
                 </td>
             </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User2</a></td>
-                <td>Đã kích hoạt</td>
-                <td>
-                    <button>
-                        Hủy kích hoạt
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User3</a></td>
-                <td>Đã kích hoạt</td>
-                <td>
-                    <button>
-                        Hủy kích hoạt
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User4</a></td>
-                <td>Đã kích hoạt</td>
-                <td>
-                    <button>
-                        Hủy kích hoạt
-                    </button>
-                </td>
-            </tr>
-
-
+            {{/each}}
         </table>
     </div>
     </div>
