@@ -113,6 +113,9 @@ const sendUserNamePassword = async (email, username, password, res) => {
 };
 /* GET home page. */
 //Login
+router.get('/', async (req, res,) => {
+  return res.render('login')
+});
 router.get('/login', async (req, res,) => {
   return res.render('login')
 });
