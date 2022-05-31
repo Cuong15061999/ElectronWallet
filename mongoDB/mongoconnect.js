@@ -27,15 +27,15 @@ const mongoconnect = {
                 return;
             } else {
                 new User({
-                    phone: '0767113948',
-                    email: 'nhokpon4@gmail.com',
+                    phone: '0987412365',
+                    email: 'phamvqcuong99@gmail.com',
                     fullname: 'Pham Vu Quoc Cuong',
                     birthDay: new Date('1999-06-15'),
                     address: '108/4 Tran Mai Ninh P12 Q Tan Binh',
                     Photos: [],
 
-                    username: 'admin12345',
-                    password: 'admin1',
+                    username: 'admin',
+                    password: '123456',
                     CreateAt: new Date('1999-06-15'),
                     Money: 10000000,
 

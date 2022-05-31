@@ -6,10 +6,10 @@ module.exports = {
     saveUninitialized: true},
     mongo:{
         dev:{
-            conn:"mongodb://127.0.0.1:27017/testImport"
+            conn:"mongodb://127.0.0.1:27017/cuoiki"
         },
         product:{
-            conn:"mongodb://127.0.0.1:27017/testImport"
+            conn:"mongodb://127.0.0.1:27017/cuoiki"
         },  
    }
 }
