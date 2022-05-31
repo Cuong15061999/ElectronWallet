@@ -713,169 +713,157 @@
 </style>
 
 <body>
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h2><span></span>Moblie Bank</h2>
-        </div>
-        <div class="sidebar-menu">
-            <ul>
-                <li>
-                    <a href="/index">
-                        <span class="las la-home" class="active"> Trang chủ</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/index/depositeAndWithdraw">
-                        <span class="las la-dollar-sign"> Nạp tiền & Rút tiền</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/index/transfer">
-                        <span class="las la-money-bill-wave"> Chuyển tiền</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/index/buyCard">
-                        <span class="las la-money-bill"> Mua thẻ điện thoại</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/index/profile">
-                        <span class="las la-user">Thông tin chi tiết</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/index/logout">
-                        <span class="las la-door-closed"> Đăng xuất</span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h2><span></span>Moblie Bank</h2>
     </div>
-    <div class="main-content">
-        <header>
-            <h2>
-                <label for="">
-                    <span class="las la-bars"> </span>
-                </label> Trang chủ
-            </h2>
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a href="/index">
+                    <span class="las la-home" class="active"> Trang chủ</span>
+                </a>
+            </li>
 
-            <div class="search-wrapper">
-                <a href="">
+            <li>
+                <a href="/index/depositeAndWithdraw">
+                    <span class="las la-dollar-sign"> Nạp tiền & Rút tiền</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/index/transfer">
+                    <span class="las la-money-bill-wave"> Chuyển tiền</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/index/buyCard">
+                    <span class="las la-money-bill"> Mua thẻ điện thoại</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/index/profile">
+                    <span class="las la-user">Thông tin chi tiết</span>
+                </a>
+            </li>
+            <li>
+                <a href="/index/logout">
+                    <span class="las la-door-closed"> Đăng xuất</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="main-content">
+    <header>
+        <h2>
+            <label for="">
+                <span class="las la-bars"> </span>
+            </label> Trang chủ
+        </h2>
+
+        <div class="search-wrapper">
+            <a href="">
                     <span class="las la-search">
                         <input type="search" placeholder="Search Here">
                     </span>
-                </a>
+            </a>
 
-            </div>
-
-            <div class="user-wrapper">
-                <img src="/images/1.jpg" width="40px" height="40px" alt="">
-                <div>
-                    <h4>{{{user.fullname}}}</h4>
-                    <small>{{{money}}} đ</small>
-                </div>
-            </div>
-        </header>
-    </div>
-    <div class="content">
-        <div id="wrapper">
-            <div class="info">
-                <div class="avatar">
-                    <img src="/images/1.jpg" alt="">
-                </div>
-                <div class="name">
-                    <p>{{{user.fullname}}}
-                        <i class="fas fa-check-circle"></i>
-                    </p>
-                </div>
-            </div>
-            <ul class="analyst">
-
-                <li>
-                    <p>Điện thoại
-                    <p>{{{user.phone}}}</p>
-                    </p>
-
-                </li>
-                <li>
-                    <p>Email
-                    <p>{{{user.email}}}</p>
-                    </p>
-
-                </li>
-                <li>
-                    <p>Họ và tên
-                    <p>{{{user.fullname}}}</p>
-                    </p>
-                </li>
-            </ul>
-            <ul class="analyst">
-                <li>
-                    <p>Ngày sinh
-                    <p>{{{dob}}}</p>
-                    </p>
-
-                </li>
-                <li>
-                    <p>Địa chỉ
-                    <p>{{{user.address}}}</p>
-                    </p>
-
-                </li>
-                <li>
-                    <p>Ngày kích hoạt
-                    <p>{{{CreateAt}}}</p>
-                    </p>
-                </li>
-            </ul>
-            <ul class="analyst">
-
-                <li>
-                    <p>Tên đăng nhập
-                    <p>{{{user.username}}}</p>
-                    </p>
-
-                </li>
-                <li>
-                    <p>Mật khẩu
-                    <p>**********************</p>
-                    </p>
-
-                </li>
-                <li>
-                    <p>Trạng thái
-                    <p>{{{user.actStatus}}}</p>
-                    </p>
-                </li>
-            </ul>
-            <form action="/index/profile" method="POST">
-                <div class="actions">
-                    <div class="update">
-                        <button style="border: none;background: none;color: white; font-size: 15px">Cập nhật</button>
-                    </div>
-                </div>
-                <input type="hidden" id="user_id" name="user_id" value="{{{user._id}}}">
-                <div class="videos">
-                    <div class="video">
-                        <img src="/images/{{{img1}}}" alt="" id="photo1" name="photo1">
-                    </div>
-                    <div class="video">
-                        <img src="/images/{{{img2}}}" alt="" id="photo2" name="photo2">
-                    </div>
-                </div>
-                <input required style="display: inline-block; padding-left: 100px" name="photo1" type="file"
-                    accept="image/*"
-                    onchange="document.getElementById('photo1').src = window.URL.createObjectURL(this.files[0])">
-                <input required style="display: inline-block; position:absolute; right: 300px" name="photo2" type="file"
-                    accept="image/*"
-                    onchange="document.getElementById('photo2').src = window.URL.createObjectURL(this.files[0])">
-            </form>
         </div>
+
+        <div class="user-wrapper">
+            <img src="/images/1.jpg" width="40px" height="40px" alt="">
+            <div>
+                <h4>{{{user.fullname}}}</h4>
+                <small>{{{money}}} đ</small>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="content">
+    <div id="wrapper">
+        <div class="info">
+            <div class="avatar">
+                <img src="/images/1.jpg" alt="">
+            </div>
+            <div class="name">
+                <p>{{{user.fullname}}}
+                    <i class="fas fa-check-circle"></i>
+                </p>
+            </div>
+        </div>
+        <ul class="analyst">
+
+            <li>
+                <p>Điện thoại
+                <p>{{{user.phone}}}</p>
+                </p>
+
+            </li>
+            <li>
+                <p>Email
+                <p>{{{user.email}}}</p>
+                </p>
+
+            </li>
+            <li>
+                <p>Họ và tên
+                <p>{{{user.fullname}}}</p>
+                </p>
+            </li>
+        </ul>
+        <ul class="analyst">
+            <li>
+                <p>Ngày sinh
+                <p>{{{dob}}}</p>
+                </p>
+
+            </li>
+            <li>
+                <p>Địa chỉ
+                <p>{{{user.address}}}</p>
+                </p>
+
+            </li>
+            <li>
+                <p>Ngày kích hoạt
+                <p>{{{CreateAt}}}</p>
+                </p>
+            </li>
+        </ul>
+        <ul class="analyst">
+
+            <li>
+                <p>Tên đăng nhập
+                <p>{{{user.username}}}</p>
+                </p>
+
+            </li>
+            <li>
+                <p>Mật khẩu
+                <p>**********************</p>
+                </p>
+
+            </li>
+            <li>
+                <p>Trạng thái
+                <p>{{{user.actStatus}}}</p>
+                </p>
+            </li>
+        </ul>
+        <form action="/index/profile" method="POST">
+            <div class="videos">
+                <div class="video">
+                    <img src="/images/{{{img1}}}" alt="" id="photo1" name="photo1">
+                </div>
+                <div class="video">
+                    <img src="/images/{{{img2}}}" alt="" id="photo2" name="photo2">
+                </div>
+            </div>
+        </form>
     </div>
+</div>
 </body>

@@ -971,47 +971,23 @@
                 <th rowspan="1">Trạng thái</th>
                 <th rowspan="1">Chức năng</th>
             </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User4</a></td>
-                <td>Chờ kích hoạt</td>
-                <td>
-                    <button>
-                        Kích hoạt
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User4</a></td>
-                <td>Chờ kích hoạt</td>
-                <td>
-                    <button>
-                        Kích hoạt
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User4</a></td>
-                <td>Chờ kích hoạt</td>
-                <td>
-                    <button>
-                        Kích hoạt
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>03/08/1993</td>
-                <td><a href="">User4</a></td>
-                <td>Chờ kích hoạt</td>
-                <td>
-                    <button>
-                        Kích hoạt
-                    </button>
-                </td>
-            </tr>
 
+            {{#each user}}
+                <tr>
+                    <td>{{this.CreateAt}}</td>
+                    <td><a href="/index/user/{{this._id}}">{{this.fullname}}</a></td>
+                    <td>Chờ xác minh</td>
+                    <td>
+                        <form action="/index/updateStatus" method="POST">
+                            <input type="hidden" name="user_id" id="user_id" value="{{this._id}}">
+                            <button>
+                                Kích hoạt
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {{/each}}
+            
 
         </table>
     </div>
